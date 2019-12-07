@@ -23,15 +23,16 @@ Page({
     brandScrollTop: 0,
     productScrollTop: 0,
     left: 0,
-    iconSearch: "../../img/icon-search.svg"
+    iconSearch: "../../img/icon-search.svg",
+    jump_id:null
   },
-  onLoad: function() {
-    var that = this;
-
+  onLoad: function () {
+    var that = this; 
+    var jumpId = wx.getStorageSync('jump_id');
     wx.request({
       url: app.API + "getListByTypeId",
       data: {
-        type_id: 1
+        type_id: jumpId
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -44,7 +45,8 @@ Page({
         data_arry = res.data;
         var f_id = data_arry[0].id;
         that.setData({
-          brandList: res.data
+          brandList: res.data,
+          cisd: jumpId
         })
         wx.request({
           url: app.API + "getListByFirstId",
@@ -79,7 +81,7 @@ Page({
   },
   cateTapHandler: function(e) {
     var id = e.target.dataset.cid;
-    var arr = ["1", "2", "3"];
+    var arr = [1,2,3];
     var crurrnt = false;
     for (var i = 0; i < arr.length; i++) {
       if (id == arr[i]) {
@@ -102,6 +104,7 @@ Page({
         let data_arry = new Array;
         data_arry = res.data;
         var f_id = data_arry[0].id;
+        console.log("aaa",f_id);
         that.setData({
           brandList: res.data,
           cisd: cisd
@@ -118,9 +121,9 @@ Page({
           dataType: 'json',
           responseType: 'text',
           success: function (res) {
-            // console.log(res.data);
             that.setData({
-              productList: res.data
+              productList: res.data,
+              uuid: f_id
             })
           },
         })

@@ -38,6 +38,7 @@
 }
 
 .cate-col {
+    height: 80rpx;
     display: inline-block;
     width: 33.3333%;
     color: #aab2bd;
@@ -49,6 +50,7 @@
     color: #000;
     font-weight: bold;
     font-family: PingFang-SC-Medium;
+    border-bottom: 2px #ff4e6f solid;
 }
 
 .category-wrapper .line {

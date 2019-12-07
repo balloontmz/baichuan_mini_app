@@ -15,7 +15,7 @@
     </swiper>
   </view>
   <view class="cate-cols">
-    <button bindtap="goProducts" class="cate-col mue-navigator" data-bid="{{item.bid}}" data-cid="{{item.cid}}" hoverClass="mue-active" plain="true" wx:for="{{cateList}}" wx:key="{{index}}">
+    <button bindtap="goProductsP" class="cate-col mue-navigator" data-id="{{item.id}}" data-cid="{{item.cid}}" hoverClass="mue-active" plain="true" wx:for="{{cateList}}" wx:key="{{index}}">
       <image class="icon" src="{{item.imgSrc}}"></image>
       <view class="text">{{item.text}}</view>
     </button>

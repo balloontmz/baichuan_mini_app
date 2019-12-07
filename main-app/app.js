@@ -2,8 +2,8 @@
 App({
   // API: "http://127.0.0.1:8090/",
   API: "https://www.bckj.store/",
-  data: {
-    
+  globalData:{
+    jump_tyep:null
   },
   onLaunch: function (e) {
     // wx.getSetting({

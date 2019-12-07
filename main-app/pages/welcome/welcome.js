@@ -26,17 +26,17 @@ Page({
     //   }
     // ],
     cateList: [{
-      cid: 1,
+      id: 1,
       bid: -1,
       text: "手机回收",
       imgSrc: "../../img/icon-mobile-1.png"
     }, {
-      cid: 3,
+      id: 2,
       bid: -1,
       text: "平板回收",
       imgSrc: "../../img/icon-pad-1.png"
     }, {
-      cid: 2,
+      id: 3,
       bid: -1,
       text: "笔记本回收",
       imgSrc: "../../img/icon-notebook-1.png"
@@ -89,8 +89,13 @@ Page({
       url: '../products/products',
     })
   },
+  goProductsP: function (e) {
+    wx.setStorageSync('jump_id', e.currentTarget.dataset.id)
+    wx.switchTab({
+      url: '../products/products'
+    })
+  },
   phoneCall: function(e) {
-    console.log("aaa", e.currentTarget.dataset.phone);
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.phone,
     })
@@ -109,7 +114,7 @@ Page({
   onShow: function() {
 
   },
-
+ 
   /**
    * 生命周期函数--监听页面隐藏
    */

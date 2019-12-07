@@ -164,8 +164,8 @@ Page({
     var second_id = wx.getStorageSync("second_id");
     // var assess_id = wx.getStorageSync("assess_id");   //这里不应该用缓存，后期会改进
     var assess_id = this.data.id;
-
-    if (assess_id === "") {
+    console.log("===>", assess_id)
+    if (!assess_id) {
       wx.showModal({
         title: "信息提示",
         content: "请选择报价标准再提交"
