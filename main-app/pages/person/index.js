@@ -84,6 +84,21 @@ Page({
         }
       })
   },
+  /**
+ * 长按复制
+ */
+  copy: function (e) {
+    var that = this;
+    wx.setClipboardData({
+      data: '收货人：佰川贵州回收部，电话：181-9857-5678， 地址：贵州省贵阳市南明区和丰大厦商城-1楼1号',
+      success: function (res) {
+        console.log(res);
+        wx.showToast({
+          title: '复制成功',
+        });
+      }
+    });
+  },
   bindGetUserInfo(e) {
     var that = this;
     console.log(e.detail.userInfo)

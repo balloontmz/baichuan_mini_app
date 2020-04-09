@@ -48,7 +48,6 @@ Page({
   goProduct:function(e) {
     var id = e.currentTarget.dataset.id;
     var name = e.currentTarget.dataset.name;
-    console.log("二级id",id);
     wx.navigateTo({
       url: '../product/product?id=' + id  + '&name=' + name ,
     })

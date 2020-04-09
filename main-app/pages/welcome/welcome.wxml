@@ -1,15 +1,18 @@
 <view class="main-box">
   <view class="search-entry-wrapper">
-    <view class="search-entry" bindtap="goSearch" >
+    <view class="search-entry" bindtap="goSearch">
       <image class="icon1" src="{{iconSearch}}"></image>
       <input type="text" disabled="ture" placeholder='请输入您想要搜索的机型' placeholder-class="plac-css"></input>
     </view>
   </view>
   <view class="banner">
     <swiper autoplay="true" class="swiper-wrapper" indicatorActiveColor="#fff" indicatorColor="#cda8df" indicatorDots="{{imgUrls.length>1}}" interval="3000">
-      <block wx:for="{{imgs}}" wx:key="{{index}}">
-        <swiper-item>
+      <block wx:for="{{imgUrls}}" wx:key="this">
+        <!-- <swiper-item>
           <image class="slide-image" mode="aspectFill" src="{{item.http+item.img_url}}"></image>
+        </swiper-item> 临时启动静态图片-->
+        <swiper-item>
+          <image class="slide-image" mode="aspectFill" src="{{item.img_url}}"></image>
         </swiper-item>
       </block>
     </swiper>

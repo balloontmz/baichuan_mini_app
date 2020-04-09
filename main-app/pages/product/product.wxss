@@ -193,8 +193,9 @@ radio-group{
   width: 90%;
   text-align: left;
   margin: 0 auto;
-  font-size: 28rpx;
+  font-size: 30rpx;
   padding-top: 10rpx;
+  color: red;
 }
 .baojia-boxx{
   width: 100%;

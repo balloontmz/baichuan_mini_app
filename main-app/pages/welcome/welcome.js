@@ -15,6 +15,9 @@ Page({
         phoneNo: '18198576789'
       }
     ],
+    imgUrls:[{
+      img_url:'../../img/index.jpg'
+    }],
     // imgUrls: [{
     //     url: "../couponget/index",
     //     src: "../../img/activie.png"
@@ -72,9 +75,9 @@ Page({
           imgs[i]["http"] = httpss
 
         }
-        that.setData({
-          imgs: imgs
-        })
+        // that.setData({
+        //   imgs: imgs
+        // })
       }
     })
   },

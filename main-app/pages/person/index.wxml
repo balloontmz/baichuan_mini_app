@@ -27,10 +27,10 @@
   <view class="mendian">
     <text class="title">门店地址</text>
     <text class="cont">佰川贵州回收部 181-9857-5678</text>
-    <text class="bot">贵州省贵阳市南明区和丰大厦商城2楼1号</text>
+    <text class="bot">贵州省贵阳市南明区和丰大厦商城-1楼1号</text>
   </view>
   <view class="botton-box">
     <view class="lianxi" bindtap="phoneCall" data-phone="18198575678">联系门店</view>
-    <view class="lianxi">复制信息</view>
+    <view class="lianxi"><text selectable='true' bindlongtap='copy'>复制信息</text></view>
   </view>
 </view>

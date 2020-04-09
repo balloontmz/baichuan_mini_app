@@ -27,8 +27,8 @@ Page({
     jump_id:null
   },
   onLoad: function () {
-    var that = this; 
-    var jumpId = wx.getStorageSync('jump_id');
+    var that = this;
+    var jumpId = wx.getStorageSync('jump_id') == "" ? 1 : wx.getStorageSync('jump_id');
     wx.request({
       url: app.API + "getListByTypeId",
       data: {
@@ -40,7 +40,7 @@ Page({
       method: 'GET',
       dataType: 'json',
       responseType: 'text',
-      success: function(res) {
+      success: function (res) {
         let data_arry = new Array;
         data_arry = res.data;
         var f_id = data_arry[0].id;
@@ -59,7 +59,7 @@ Page({
           method: 'GET',
           dataType: 'json',
           responseType: 'text',
-          success: function(res) {
+          success: function (res) {
             // console.log(res.data);
             that.setData({
               productList: res.data
@@ -67,8 +67,8 @@ Page({
           },
         })
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
 
@@ -81,6 +81,7 @@ Page({
   },
   cateTapHandler: function(e) {
     var id = e.target.dataset.cid;
+    wx.setStorageSync('jump_id', id)
     var arr = [1,2,3];
     var crurrnt = false;
     for (var i = 0; i < arr.length; i++) {
@@ -155,7 +156,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
-        console.log("===>", res.data);
         that.setData({
           productList: res.data,
           uuid: uuid
@@ -164,27 +164,30 @@ Page({
     })
   },
   onShow: function() {
+    var that = this;
+    
     var openid = wx.getStorageSync("user_id");
     if (openid == "") {
       wx.switchTab({
         url: "../person/index",
       })
-    } else {
-      wx.request({
-        url: app.API + 'isBindPhone',
-        method: 'GET',
-        data: {
-          openid: openid
-        },
-        success: function(res) {
-          if (res.data == 0) {
-            wx.redirectTo({
-              url: '../bind/bind',
-            })
-          }
-        }
-      })
     }
+    //  else{
+    //   wx.request({
+    //     url: app.API + 'isBindPhone',
+    //     method: 'GET',
+    //     data: {
+    //       openid: openid
+    //     },
+    //     success: function(res) {
+    //       if (res.data == 0) {
+    //         wx.redirectTo({
+    //           url: '../bind/bind',
+    //         })
+    //       }
+    //     }
+    //   })
+    // }
   },
   onShareAppMessage: function(t) {}
 });
