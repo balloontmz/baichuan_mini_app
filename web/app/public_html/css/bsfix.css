@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+.text-xs{
+    font-size: 11px !important;
+}
+.menu-header{
+    height: 12px;line-height: 12px;font-size: 12px;
+    margin-bottom: 5px;
+    color: #8e9bb7;
+}
+.menu-item{
+    height: 25px !important;
+    line-height: 25px !important;
+    padding-right: 0px !important;
+}
+.width250{
+    width: 250px !important;
+}
+
+.width200{
+    width: 200px !important;
+}
+
+.width150{
+    width: 150px !important;
+}
+.width120{
+    width: 120px !important;
+}
+.width100{
+    width: 100px !important;
+}
+.width80{
+    width: 80px !important;
+}
+.width60{
+    width: 60px !important;
+}
+.no-padding-table td, .no-padding-table th{
+    padding:0px !important;
+}
+.remove-shadow *{
+    box-shadow: none;
+}
+
+.pointer{
+    cursor:pointer;
+}

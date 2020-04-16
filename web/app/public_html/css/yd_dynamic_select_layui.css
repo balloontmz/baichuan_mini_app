@@ -1,0 +1,29 @@
+.layui-form [lay-ignore].yd-tree-select {
+    display: none !important;
+}
+.select2-selection   {
+    min-height: 38px;
+    /*line-height: 30px;*/
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    border-radius: 2px;
+    border-color: #8f8f8f !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height:30px
+}
+
+.select2-container--default .select2-selection--single {
+    border-color: #8f8f8f !important;
+}
+.select2-container .select2-selection--multiple {
+    min-height: 38px;
+}
+.select2-search__field{
+    height: 26px;
+}

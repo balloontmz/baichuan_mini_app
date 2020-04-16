@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1VksN0rf8IswmUKDYDnmHn7gspd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\baichuan-work\web\app\vendor" />
+      <recent name="D:\baichuan-work\web\app\public_html\img" />
+      <recent name="D:\baichuan-work\web\app" />
+      <recent name="D:\baichuan-work\web\app\public_html" />
+      <recent name="D:\baichuan-work\web\app\vendor\helper" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="" />
+      <created>1573467834761</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573467834761</updated>
+      <workItem from="1573467843472" duration="242000" />
+      <workItem from="1573521392210" duration="15768000" />
+      <workItem from="1573608628342" duration="17894000" />
+      <workItem from="1573635143540" duration="4459000" />
+      <workItem from="1573694059498" duration="26331000" />
+      <workItem from="1573780399505" duration="18113000" />
+      <workItem from="1573807884347" duration="108000" />
+      <workItem from="1574039735389" duration="11000" />
+      <workItem from="1574058621330" duration="9974000" />
+      <workItem from="1574143295088" duration="12537000" />
+      <workItem from="1574157008415" duration="1360000" />
+      <workItem from="1574212554705" duration="21949000" />
+      <workItem from="1574305594000" duration="12034000" />
+      <workItem from="1574385530898" duration="15251000" />
+      <workItem from="1574646509937" duration="1867000" />
+      <workItem from="1574662155254" duration="8440000" />
+      <workItem from="1574731085278" duration="5411000" />
+      <workItem from="1574930032482" duration="4255000" />
+      <workItem from="1575258174309" duration="3231000" />
+      <workItem from="1575426488297" duration="1114000" />
+      <workItem from="1575519062606" duration="5142000" />
+      <workItem from="1577808411043" duration="355000" />
+      <workItem from="1577890176693" duration="918000" />
+      <workItem from="1577976594968" duration="1022000" />
+      <workItem from="1577978187219" duration="73000" />
+      <workItem from="1578064771420" duration="608000" />
+      <workItem from="1578115481366" duration="5289000" />
+      <workItem from="1578322440927" duration="2331000" />
+      <workItem from="1578406264079" duration="3783000" />
+      <workItem from="1579361384981" duration="34000" />
+      <workItem from="1582705122099" duration="811000" />
+      <workItem from="1582900740749" duration="5067000" />
+      <workItem from="1582962968644" duration="3213000" />
+      <workItem from="1582968153309" duration="9834000" />
+      <workItem from="1583061952604" duration="1115000" />
+      <workItem from="1583073496674" duration="42000" />
+      <workItem from="1583073553728" duration="1509000" />
+      <workItem from="1583161637227" duration="2874000" />
+      <workItem from="1583245968634" duration="1859000" />
+      <workItem from="1583249059651" duration="218000" />
+      <workItem from="1585463740835" duration="5571000" />
+      <workItem from="1585490731111" duration="8276000" />
+      <workItem from="1585579128677" duration="4432000" />
+      <workItem from="1585657590027" duration="66000" />
+      <workItem from="1586355917519" duration="9669000" />
+      <workItem from="1586443225604" duration="6158000" />
+      <workItem from="1586527628287" duration="5025000" />
+      <workItem from="1586585178155" duration="20914000" />
+      <workItem from="1586708271404" duration="2818000" />
+      <workItem from="1586711282020" duration="2754000" />
+      <workItem from="1586779392597" duration="3702000" />
+      <workItem from="1586788111509" duration="7016000" />
+      <workItem from="1586879936812" duration="4726000" />
+      <workItem from="1586884757586" duration="119000" />
+      <workItem from="1586955291775" duration="8477000" />
+      <workItem from="1587052073255" duration="3895000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="437" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583161820461">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="437" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583161820461" />
+    <state x="484" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1586591568481">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="484" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586591568481" />
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586591062825">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1586591062825" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587053731627">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587053731627" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1586880511270">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586880511270" />
+    <state x="430" y="177" key="NewPhpClassDialog" timestamp="1586591751938">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="430" y="177" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1586591751938" />
+    <state x="499" y="287" key="NewPhpFileDialog" timestamp="1586965698198">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="499" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1586965698198" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1586589854234">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586589854234" />
+    <state x="300" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586794926672">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="300" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1586794926672" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586882868844">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586882868844" />
+  </component>
+</project>

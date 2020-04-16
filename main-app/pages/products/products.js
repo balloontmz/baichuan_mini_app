@@ -172,22 +172,22 @@ Page({
         url: "../person/index",
       })
     }
-    //  else{
-    //   wx.request({
-    //     url: app.API + 'isBindPhone',
-    //     method: 'GET',
-    //     data: {
-    //       openid: openid
-    //     },
-    //     success: function(res) {
-    //       if (res.data == 0) {
-    //         wx.redirectTo({
-    //           url: '../bind/bind',
-    //         })
-    //       }
-    //     }
-    //   })
-    // }
+     else{
+      wx.request({
+        url: app.API + 'isBindPhone',
+        method: 'GET',
+        data: {
+          openid: openid
+        },
+        success: function(res) {
+          if (res.data == 0) {
+            wx.redirectTo({
+              url: '../bind/bind',
+            })
+          }
+        }
+      })
+    }
   },
   onShareAppMessage: function(t) {}
 });
