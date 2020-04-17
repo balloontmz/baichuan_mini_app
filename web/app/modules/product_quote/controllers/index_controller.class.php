@@ -30,22 +30,12 @@ class Index_Controller extends YZE_Resource_Controller
         $product_quote_search = new Product_Quote_Search();
         $product_quote_search->page = $request->get_from_get("page", 1);
         $product_quote_search->pagesize = $request->get_from_get("limit", 10);
-        $product_price_ids = array();
         if ($product_id) {
             $product_quote_search->page = 1;
             $product_quote_search->product_id = trim($product_id);
-            $product_price_obj = Product_Price_Model::get_by_product_id($product_id);
-        }else{
-            $product_price_obj = Product_Price_Model::find_all();
-        }
-        $i=0;
-        foreach ($product_price_obj as $item){
-            $product_price_ids[$i] = $item->id;
-            $i++;
         }
         $product_quote_datas = $product_quote_search->build_sql(new YZE_SQL(), $totalcnt);
 
-        $this->set_View_Data('product_price_ids', $product_price_ids);
         $this->set_View_Data('product_quote_cnt', $totalcnt);
         $this->set_view_data('product_quote_datas', $product_quote_datas);
         $this->set_view_data('yze_page_title', '产品报价列表');
@@ -148,10 +138,8 @@ class Index_Controller extends YZE_Resource_Controller
         $this->set_View_Data('price', $price);
         $this->set_view_data('yze_page_title', '产品改价');
     }
-
-
     //只修改报价
-    public function post_price()
+    public function post_edit_price()
     {
         $request = $this->request;
         $this->layout = '';
@@ -168,6 +156,45 @@ class Index_Controller extends YZE_Resource_Controller
             "price" => implode(",", $price_arr)
         ];
         Product_Price_Model::update_by_id($datas['product_price_id'], $seve_arr);
+        return YZE_JSON_View::success($this);
+
+    }
+
+
+
+    //一键改价
+    public function post_price()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $price = $request->get_from_post("price");
+        $add_or_reduce = $request->get_from_post("add_or_reduce");
+        $product_id = $request->get_from_post("product_id");
+        if ($product_id == 'all') {
+            $product_quote = Product_Price_Model::find_all();
+        } else {
+            $product_quote = Product_Price_Model::get_by_product_id($product_id);
+        }
+        $product_quote_arr = array();
+        $price_arr = array();
+        $i = 0;
+        foreach ($product_quote as $item) {
+            $product_quote_arr[$i]['id'] = $item->id;
+            $product_quote_arr[$i]['prices'] = explode(",", $item->price);
+            $i++;
+        }
+        for ($j = 0; $j < count($product_quote_arr); $j++) {
+            for ($a = 0; $a < count($product_quote_arr[$j]['prices']); $a++) {
+                if ($add_or_reduce == 1) {
+                    $price_arr[$j][$a] = intval($product_quote_arr[$j]['prices'][$a]) + intval($price);
+                } else if ($add_or_reduce == -1) {
+                    $price_arr[$j][$a] = intval($product_quote_arr[$j]['prices'][$a]) - intval($price);
+                }
+            }
+        }
+        for ($i = 0; $i < count($price_arr); $i++) {
+            Product_Price_Model::update_by_id($product_quote_arr[$i]['id'], ["price" => implode(",", $price_arr[$i])]);
+        }
         return YZE_JSON_View::success($this);
 
     }

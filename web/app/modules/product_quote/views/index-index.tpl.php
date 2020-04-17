@@ -16,9 +16,7 @@ use \yangzie\YZE_RuntimeException;
  */
 
 $data = $this->get_data('arg_name');
-$product_price_str = implode(",", $this->get_data('product_price_ids'));
 $get_first_product = First_Product_Model::find_all();
-
 ?>
 <div class='m-3'>
     <div class="d-flex align-items-center justify-content-between">
@@ -30,7 +28,6 @@ $get_first_product = First_Product_Model::find_all();
     </div>
     <blockquote class="layui-elem-quote news_search mt-1">
         <form class="layui-form">
-            <input id="product_price_str" type="hidden" value="<?= $product_price_str ?>">
             <div class="layui-inline">
                 <select name="" class="layui-select first_product"
                         lay-filter="first_product" lay-search="">
@@ -48,19 +45,31 @@ $get_first_product = First_Product_Model::find_all();
             </div>
             <button class="layui-btn layui-btn-normal" type="button" onclick="reloadTable()"><i class="layui-icon"></i>搜索
             </button>
+            <div class="layui-inline">
+                <select name="" id="add_or_reduce" class="layui-select"
+                        lay-filter="select_edit_price">
+                    <option value="">请选择加价或减价</option>
+                    <option value="1">加价</option>
+                    <option value="-1">减价</option>
+                </select>
+            </div>
+            <div class="layui-inline">
+                <input class="layui-input" id="add_price" placeholder="请输入加价或减价的值" value="">
+            </div>
             <button class="layui-btn layui-btn-warm" type="button" id="super_edit"><i
                         class="layui-icon layui-icon-release" style="font-size: 15px; color: white;"></i>一键改价
             </button>
         </form>
 
     </blockquote>
+
     <table class="layui-table" lay-data="{ url:'/product_quote/index/index.json', page:true, id:'test'}"
            lay-filter="test">
         <thead>
         <tr>
             <th lay-data="{field:'name'}">产品名称</th>
             <th lay-data="{field:'second_attribute_names'}">属性</th>
-            <th lay-data="{field:'quote_standard'}">报价</th>
+            <th lay-data="{field:'quote_standard'}">报价 / ￥</th>
             <th lay-data="{fixed: 'right', align: 'center',width:180, toolbar: '#barDemo'}">操作</th>
         </tr>
         </thead>
@@ -142,7 +151,41 @@ $get_first_product = First_Product_Model::find_all();
     }
 
     $("#super_edit").click(function () {
-        
+        var options = $("#add_or_reduce option:selected");
+        var uuid = YDJS.uuid(6, 16);
+        YDJS.loading("正在努力改价中...", uuid);
+        if (options.val()) {
+            $.ajax({
+                url: "/product_quote/index/price",
+                method: "post",
+                data: {
+                    price: $("#add_price").val(),
+                    add_or_reduce: options.val(),
+                    product_id: $("#query").val() ? $("#query").val() : "all"
+                },
+                success: function (res) {
+                    if (res.success) {
+                        // obj.del();
+                        YDJS.hide_dialog(uuid);
+                        YDJS.toast("改价成功！", YDJS.ICON_SUCCESS, function () {
+                            table.reload("test", {
+                                where: {
+                                    query: $("#query").val()
+                                }
+                            });
+                        });
+                    } else {
+                        YDJS.toast("删除失败", YDJS.ICON_WARN);
+                    }
+                },
+                error: function () {
+                    YDJS.toast("系统错误", YDJS.ICON_ERROR);
+                }
+            });
+        } else {
+            YDJS.hide_dialog(uuid);
+            YDJS.toast("请选择加价或减价！", YDJS.ICON_WARN);
+        }
     })
 
 </script>

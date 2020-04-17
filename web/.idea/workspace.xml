@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="" />
+    <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/controllers/index_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/views/index-edit_quote.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/views/index-edit_quote.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/views/index-index.tpl.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,6 +123,7 @@
       <workItem from="1586884757586" duration="119000" />
       <workItem from="1586955291775" duration="8477000" />
       <workItem from="1587052073255" duration="3895000" />
+      <workItem from="1587131289993" duration="11702000" />
     </task>
     <servers />
   </component>
@@ -161,6 +167,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="300" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1586794926672" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1587142916827">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587142916827" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586882868844">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
