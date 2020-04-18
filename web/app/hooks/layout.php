@@ -24,7 +24,7 @@ YZE_Hook::add_hook(YD_LAYOUT_SIDEBAR_VIEW, function ($layout) {
                                 <strong class="menu-header">产品管理</strong>
                                 <div class="d-flex align-items-center">
                                     <a href="/user/index" class="link menu-item width100">微信用户</a>
-                                    <a href="/user/store_user" class="link menu-item width100">店铺用户</a>
+                                    <a href="/user/store_user" class="link menu-item width100">店铺管理</a>
                                     <a href="/user/store_option" class="link menu-item width100">店铺配置</a>
                                 </div>
                             </div>

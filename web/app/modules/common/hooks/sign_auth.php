@@ -16,7 +16,7 @@ define("YD_ASSET_WX_USER_LOGIN", "YD_ASSET_WX_USER_LOGIN");
 // 返回登录界面
 YZE_Hook::add_hook(YD_COMMON_SIGNIN_POST, function () {
     $request = \yangzie\YZE_Request::get_instance();
-    $admin = Store_User_Model::login($request->get_from_post("username"), $request->get_from_post("password"));
+    $admin = Store_User_Model::login($request->get_from_post("username"), base64_encode($request->get_from_post("password")));
     if ($admin) {
         YZE_Hook::do_hook(YZE_HOOK_SET_LOGIN_USER, $admin);
         return $admin;

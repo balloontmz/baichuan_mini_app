@@ -41,12 +41,22 @@ class Store_User_Model extends YZE_Model
      *
      * @var string
      */
+    const F_STORE_PHONE = "store_phone";
+    /**
+     *
+     * @var string
+     */
+    const F_STORE_ADDRESS = "store_address";
+    /**
+     *
+     * @var string
+     */
     const F_PASSWORD = "password";
     /**
      *
      * @var string
      */
-    const F_WX_AAPID = "wx_aapid";
+    const F_WX_APPID = "wx_appid";
     /**
      *
      * @var string
@@ -56,8 +66,10 @@ class Store_User_Model extends YZE_Model
         'id' => array('type' => 'integer', 'null' => false, 'length' => '11', 'default' => '',),
         'uuid' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
         'store_name' => array('type' => 'string', 'null' => true, 'length' => '90', 'default' => '',),
+        'store_phone' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
+        'store_address' => array('type' => 'string', 'null' => true, 'length' => '200', 'default' => '',),
         'password' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
-        'wx_aapid' => array('type' => 'string', 'null' => true, 'length' => '90', 'default' => '',),
+        'wx_appid' => array('type' => 'string', 'null' => true, 'length' => '90', 'default' => '',),
         'type' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
 
     );
@@ -74,8 +86,8 @@ class Store_User_Model extends YZE_Model
     /**
      * @param $store_name
      * @param $password
-     * @author weiqianlai 2020-04-18
      */
+
     public function login($store_name, $password)
     {
         return Store_User_Model::from()
