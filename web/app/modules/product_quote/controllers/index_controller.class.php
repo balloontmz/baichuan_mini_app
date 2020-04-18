@@ -199,6 +199,15 @@ class Index_Controller extends YZE_Resource_Controller
 
     }
 
+    public function post_remove(){
+        $request = $this->request;
+        $this->layout = '';
+        $product_price_id = $request->get_from_post('id');
+        $product_price_obj = Product_Price_Model::find_by_id($product_price_id);
+        $product_price_obj->remove();
+        return YZE_JSON_View::success($this);
+    }
+
 
     public function exception(YZE_RuntimeException $e)
     {

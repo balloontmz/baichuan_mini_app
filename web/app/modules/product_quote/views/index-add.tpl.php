@@ -140,8 +140,8 @@ $get_quote_standard = Quote_Standard_Model::find_all();
         <button class="layui-btn layui-btn-default yd-form-submit yd-spin-btn mt-3"
                 data-submit-cb="afterSubmit"
                 data-in-top=1
-                data-url="/product_quote/index/price"
-                data-redirect=""
+                data-url="/product_quote/index/add"
+                data-redirect="/product_quote/index/index"
                 type="button">
             <i class="iconfont icon-baocun"></i> 保存
         </button>

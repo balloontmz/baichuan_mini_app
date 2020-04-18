@@ -74,6 +74,11 @@ class User_Model extends YZE_Model{
      * @var integer
      */
     const F_STATUS = "status";
+    /**
+     * 
+     * @var string
+     */
+    const F_WX_APPID = "wx_appid";
     public static $columns = array(
                'id'         => array('type' => 'integer', 'null' => false,'length' => '11','default'	=> '',),
        'uuid'       => array('type' => 'string', 'null' => true,'length' => '45','default'	=> '',),
@@ -86,6 +91,7 @@ class User_Model extends YZE_Model{
        'order_id'   => array('type' => 'integer', 'null' => true,'length' => '11','default'	=> '',),
        'phone'      => array('type' => 'integer', 'null' => true,'length' => '45','default'	=> '',),
        'status'     => array('type' => 'integer', 'null' => true,'length' => '11','default'	=> '',),
+       'wx_appid'   => array('type' => 'string', 'null' => true,'length' => '90','default'	=> '',),
 
     );
     //array('attr'=>array('from'=>'id','to'=>'id','class'=>'','type'=>'one-one||one-many') )
@@ -97,14 +103,7 @@ class User_Model extends YZE_Model{
     protected $unique_key = array (
   'id' => 'PRIMARY',
 );
-    function login($name,$password){
-        $user =  User_Model::from()
-            ->where("name=:name and password=:password")
-            ->select([":name"=>$name,":password"=>$password]);
-        foreach ($user as $item){
-            return $item->name;
-        }
-    }
+    		
     
 	
 }?>

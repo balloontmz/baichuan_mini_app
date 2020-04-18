@@ -19,10 +19,10 @@ class Product_Quote_Module extends YZE_Base_Module
         return array(
             'name' => 'Product_quote',
             'routers' => array(
-                '' => array(
-                    'controller' => 'index',
-                    'args' => array(),
-                ),
+//                '' => array(
+//                    'controller' => 'index',
+//                    'args' => array(),
+//                ),
             )
         );
     }

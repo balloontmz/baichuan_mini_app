@@ -27,7 +27,7 @@ define("APPLICATION_NAME", "佰川回收");               //应用名称
 define("UI_FRAMEWORK_NAME", "layui");                //前端ui框架名称
 define("ORG_NAME", "佰川回收");
 define("ORG_FULL_NAME", "佰川回收");
-define("VERSION", "20190928");
+define("VERSION", "1.0.0");
 define("PAGE_SIZE", 10);//分页大小, 和layui table默认分页10条保持一致
 define("FACE_APP_ID", "");//虹软人脸识别appid
 define("FACE_SDK_KEY", "");//虹软人脸识别sdk key

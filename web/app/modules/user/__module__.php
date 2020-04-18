@@ -19,10 +19,10 @@ class User_Module extends YZE_Base_Module
         return array(
             'name' => 'User',
             'routers' => array(
-//        	''	=> array(
-//			'controller'	=> 'index',
-//        		'args'	=> array(),
-//        	    ),
+                '' => array(
+                    'controller' => 'index',
+                    'args' => array(),
+                ),
             )
         );
     }
