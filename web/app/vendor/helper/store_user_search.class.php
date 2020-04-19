@@ -37,6 +37,7 @@ class Store_User_Search extends Base_Search
     {
         try {
             $sql->from(Store_User_Model::CLASS_NAME, "su");
+            $sql->order_by("su", Store_User_Model::F_ID, "desc");
             if ($this->store_name)
                 $sql->where("su", Store_User_Model::F_NAME, YZE_SQL::LIKE, $this->store_name);
             $sql->limit(($this->page - 1) * $this->pagesize, $this->pagesize);

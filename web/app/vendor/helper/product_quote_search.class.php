@@ -38,6 +38,7 @@ class Product_Quote_Search extends Base_Search
     {
         try {
             $sql->from(Product_Price_Model::CLASS_NAME, "pq");
+            $sql->order_by("pq",Product_Price_Model::F_ID,"desc");
             if ($this->product_id)
                 $sql->where("pq", Product_Price_Model::F_PRODUCT_ID, YZE_SQL::EQ, $this->product_id);
             $sql->limit(($this->page - 1) * $this->pagesize, $this->pagesize);

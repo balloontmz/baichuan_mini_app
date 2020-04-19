@@ -63,7 +63,7 @@ $noticeCount = YZE_Hook::do_hook(YD_NOTICE_GET_NUM, ['user_id' => $loginUser->id
                         <?= $loginUser->store_name ?>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/profile">基本资料</a></dd>
+                        <dd><a href="/user/profile?uuid=<?= $loginUser->uuid ?>">基本资料</a></dd>
                         <hr>
                         <dd><a href="/signout">退出</a></dd>
                     </dl>

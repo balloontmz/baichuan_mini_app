@@ -86,6 +86,8 @@ class Store_User_Model extends YZE_Model
     /**
      * @param $store_name
      * @param $password
+     * @return object
+     * @author weiqianlai
      */
 
     public function login($store_name, $password)
@@ -93,6 +95,30 @@ class Store_User_Model extends YZE_Model
         return Store_User_Model::from()
             ->where("store_name=:store_name AND password=:password")
             ->getSingle([":store_name" => $store_name, ":password" => $password]);
+    }
+
+    /**
+     * @param $uuid
+     * @return object
+     * @author weiqianlai
+     */
+    public function find_by_uuid($uuid)
+    {
+        return Store_User_Model::from()
+            ->where("uuid=:uuid")
+            ->getSingle([":uuid" => $uuid]);
+    }
+
+    /**
+     * 获取非总店的所有分店
+     * @return array
+     * @author weiqianlai
+     */
+    public function get_normal()
+    {
+        return Store_User_Model::from()
+            ->where("type!='admin'")
+            ->select();
     }
 
 

@@ -16,7 +16,14 @@ class Store_Option_Controller extends YZE_Resource_Controller {
     public function index(){
         $request = $this->request;
         //$this->layout = 'tpl name';
-        $this->set_view_data('yze_page_title', 'this is controller store_option');
+        $this->set_view_data('yze_page_title', '店铺配置');
+    }
+
+    public function post_first_product(){
+        $request = $this->request;
+        $this->layout = '';
+        $store_option = Store_Option_Model::get_by_fp_id($request->get_from_post('first_product_id'));
+        return YZE_JSON_View::success($this);
     }
 
     public function exception(YZE_RuntimeException $e){

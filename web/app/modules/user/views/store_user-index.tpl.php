@@ -17,7 +17,7 @@ $data = $this->get_data('arg_name');
 ?>
 <div class='m-3'>
     <div class="d-flex align-items-center justify-content-between">
-        <h2 class="font-weight-bold">用户列表</h2>
+        <h2 class="font-weight-bold">店铺列表</h2>
         <div class="">
             <button type="button" class="layui-btn layui-btn-normal yd-dialog" data-url="/user/store_user/add">新增分店
             </button>
