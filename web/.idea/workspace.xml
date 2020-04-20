@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/user/controllers/profile_controller.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/user/views/profile-index.tpl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/user/profile_controller.class.phpt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/user/views/store_option-index.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/user/controllers/store_option_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/controllers/store_option_controller.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_option_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_option_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_option-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_option-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_user-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_user-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/helper/product_quote_search.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/helper/product_quote_search.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/helper/store_user_search.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/helper/store_user_search.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/layouts/tpl.layui.layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/layouts/tpl.layui.layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public_html/img/timg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/public_html/img/timg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/vendor/views/layui.signin.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/views/layui.signin.tpl.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +36,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/work-space/river_check/web" />
+    <property name="last_opened_file_path" value="D:/work-space/prisonoa/web" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -49,11 +44,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\baichuan-work\baichuan_mini_app\web\app\public_html\img" />
       <recent name="D:\baichuan-work\web\app\vendor" />
       <recent name="D:\baichuan-work\web\app\public_html\img" />
       <recent name="D:\baichuan-work\web\app" />
       <recent name="D:\baichuan-work\web\app\public_html" />
-      <recent name="D:\baichuan-work\web\app\vendor\helper" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -137,6 +132,7 @@
       <workItem from="1587131289993" duration="11702000" />
       <workItem from="1587212588162" duration="15007000" />
       <workItem from="1587302387883" duration="10549000" />
+      <workItem from="1587395651638" duration="4595000" />
     </task>
     <servers />
   </component>
@@ -159,22 +155,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1586591062825" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587227006049">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587398369888">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587227006049" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1587308405624">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587398369888" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1587399606681">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587308405624" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587399606681" />
     <state x="430" y="177" key="NewPhpClassDialog" timestamp="1586591751938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="430" y="177" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1586591751938" />
-    <state x="499" y="287" key="NewPhpFileDialog" timestamp="1587226514818">
+    <state x="499" y="287" key="NewPhpFileDialog" timestamp="1587398562719">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="499" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1587226514818" />
+    <state x="499" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1587398562719" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1586589854234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

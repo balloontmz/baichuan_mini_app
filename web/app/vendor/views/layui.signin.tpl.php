@@ -217,9 +217,7 @@ $this->layout = "signin.layui";
     </div>
 
     <div class="layui-trans layadmin-user-login-footer">
-
-        <p>© <?= ORG_NAME ?> / 技术支持：韦乾来 18212446530
-        </p>
+        <p style="color: white;">© <?= ORG_NAME ?> / 技术支持：韦乾来 18212446530</p>
     </div>
 
 </div>

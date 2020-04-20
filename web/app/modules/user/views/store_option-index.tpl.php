@@ -16,7 +16,6 @@ use \yangzie\YZE_RuntimeException;
 
 $data = $this->get_data('arg_name');
 $store_user = Store_User_Model::get_normal();
-$first_product = First_Product_Model::find_all();
 ?>
 <form class="layui-form">
     <div class="m-3">
@@ -34,7 +33,7 @@ $first_product = First_Product_Model::find_all();
                 <tbody>
                 <tr>
                     <td class="p-0">
-                        <select name="store_user_id" class="layui-select first_product"
+                        <select name="store_user_id" id="store_user_id" class="layui-select store_user"
                                 lay-filter="first_product" lay-search="">
                             <option value="">请选择</option>
                             <?php foreach ($store_user as $item) { ?>
@@ -63,32 +62,7 @@ $first_product = First_Product_Model::find_all();
                     <th>操作</th>
                 </tr>
                 </thead>
-                <tbody class="fprlist">
-                <tr>
-                    <td class="p-0">
-                        <select name="first_product_id[]" class="layui-select first_attribute"
-                                lay-filter="first_attribute" lay-search="">
-                            <option value="">请选择</option>
-                            <?php foreach ($first_product as $item) { ?>
-                                <option value="<?= $item->id ?>"><?= $item->name ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                    <td class="p-0">
-                        <select name="second_attribute_id[]" class="layui-select second_attribute"
-                                lay-filter="select-question" lay-search="">
-                            <option value="">请选择</option>
-                            <option value="1">加价</option>
-                            <option value="-1">减价</option>
-                        </select>
-                    </td>
-                    <td class="p-0">
-                        <input class="layui-input" name="price[]">
-                    </td>
-                    <td class="p-1">
-                        <button type="button" class="layui-btn layui-btn-xs layui-btn-danger removetr">删除</button>
-                    </td>
-                </tr>
+                <tbody id="fprlist">
                 </tbody>
             </table>
         </div>
@@ -111,27 +85,21 @@ $first_product = First_Product_Model::find_all();
 
         layuiform.on('select(first_product)', function (data) {
             $.ajax({
-                url: '/product_quote/index/product',
+                url: '/user/store_option/index.json',
                 data: {
-                    first_product_id: data.value
+                    store_user_id: data.value
                 },
-                method: 'post',
-                // dataType: 'json',
+                method: 'get',
+                dataType: "JSON",
                 success: function (res) {
-                    var str = "<option value=\"\">请选择</option>";
-                    if (res.data) {
-                        var p_list = res.data;
-                        for (var i = 0; i < p_list.length; i++) {
-                            str += "<option value=" + p_list[i].id + ">" + p_list[i].name + "</option>"
-                        }
-
-                        $(".product").html(str);
-                    }
+                    console.log(res.tr);
+                    $("#fprlist").html(res.tr);
                     YDJS.rebind();
                     layuiform.render();
                 }
             });
         });
+
         layuiform.on('select(first_attribute)', function (data) {
             var addinput = $(this).parents("tr").outerHTML();
             $(this).parents("tbody").append(addinput);
