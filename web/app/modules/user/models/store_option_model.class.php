@@ -73,14 +73,15 @@ class Store_Option_Model extends YZE_Model
 
     /**
      * @param $first_product_id
+     * @param $store_user_id
      * @return array
      * @author weiqianlai
      */
-    public function get_by_fp_id($first_product_id)
+    public function get_by_fpsu_id($store_user_id, $first_product_id)
     {
         return Store_Option_Model::from()
-            ->where("first_product_id=:first_product_id")
-            ->select([":first_product_id" => $first_product_id]);
+            ->where("first_product_id=:first_product_id AND store_user_id=:store_user_id")
+            ->getSingle([":first_product_id" => $first_product_id, ":store_user_id" => $store_user_id]);
     }
 
     /**

@@ -26,6 +26,30 @@ class Store_Option_Controller extends YZE_Resource_Controller
         $this->set_view_data('yze_page_title', '店铺配置');
     }
 
+    public function post_add()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $datas = $request->the_post_datas();
+        for ($i = 0; $i < count($datas['first_product_id']); $i++) {
+            if (!$datas['first_product_id'][$i]) continue;
+            $store_option_obj = Store_Option_Model::get_by_fpsu_id($datas['store_user_id'], $datas['first_product_id'][$i]);
+            if ($store_option_obj) {
+                Store_Option_Model::update_by_id($store_option_obj->id, ["symbol" => $datas['symbol'][$i], "store_price" => $datas['price'][$i]]);
+            } else {
+                $store_option_model = new Store_Option_Model();
+                $store_option_model->set(Store_Option_Model::F_UUID, uuid());
+                $store_option_model->set(Store_Option_Model::F_STORE_USER_ID, $datas['store_user_id']);
+                $store_option_model->set(Store_Option_Model::F_FIRST_PRODUCT_ID, $datas['first_product_id'][$i]);
+                $store_option_model->set(Store_Option_Model::F_SYMBOL, $datas['symbol'][$i]);
+                $store_option_model->set(Store_Option_Model::F_STORE_PRICE, $datas['price'][$i]);
+                $store_option_model->save();
+            }
+
+        }
+        return YZE_JSON_View::success($this);
+    }
+
 
     public function exception(YZE_RuntimeException $e)
     {

@@ -69,13 +69,19 @@ $store_user = Store_User_Model::get_normal();
         <button class="layui-btn layui-btn-default yd-form-submit yd-spin-btn mt-3"
                 data-submit-cb="afterSubmit"
                 data-in-top=1
-                data-url="/product_quote/index/add"
-                data-redirect="/product_quote/index/index"
-                type="button">
+                data-url="/user/store_option/add"
+                id="save_data"
+                type="button" style="display: none">
             <i class="iconfont icon-baocun"></i> 保存
         </button>
     </div>
 </form>
+<div class="layui-input-block m-3">
+    <button class="layui-btn layui-btn-normal w-100" id="edit">
+        <i class="layui-icon layui-icon-edit"></i> 编 辑
+    </button>
+</div>
+<!--data-redirect="/user/store_option/index"-->
 <script type="text/javascript">
     var layuiform, layuitable;
     layui.use(['form', 'laydate', 'table'], function () {
@@ -118,7 +124,7 @@ $store_user = Store_User_Model::get_normal();
         });
 
         //删除行
-        $('.qtrlist').delegate(".removetr", 'click', function () {
+        $('#fprlist').delegate(".removetr", 'click', function () {
             if ($(".qtrlist tr").length <= 1) {
                 layer.alert("至少保留一行");
             } else {
@@ -126,4 +132,14 @@ $store_user = Store_User_Model::get_normal();
             }
         });
     });
+    $("#edit").click(function () {
+        $("#save_data").css("display", "");
+        $("#edit").css("display", "none")
+    })
+    $("#save_data").click(function () {
+        $("#edit").css("display", "");
+        $("#save_data").css("display", "none")
+    })
 </script>
+
+
