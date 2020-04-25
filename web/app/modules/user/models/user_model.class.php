@@ -41,12 +41,7 @@ class User_Model extends YZE_Model
      *
      * @var string
      */
-    const F_SEX = "sex";
-    /**
-     *
-     * @var string
-     */
-    const F_PASSWORD = "password";
+    const F_GENDER = "gender";
     /**
      *
      * @var string
@@ -66,12 +61,7 @@ class User_Model extends YZE_Model
      *
      * @var integer
      */
-    const F_ORDER_ID = "order_id";
-    /**
-     *
-     * @var integer
-     */
-    const F_PHONE = "phone";
+    const F_CELLPHONE = "cellphone";
     /**
      *
      * @var integer
@@ -82,19 +72,23 @@ class User_Model extends YZE_Model
      * @var string
      */
     const F_WX_APPID = "wx_appid";
+    /**
+     *
+     * @var string
+     */
+    const F_WX_AVATAR = "wx_avatar";
     public static $columns = array(
         'id' => array('type' => 'integer', 'null' => false, 'length' => '11', 'default' => '',),
         'uuid' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
         'name' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
-        'sex' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
-        'password' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
+        'gender' => array('type' => 'string', 'null' => true, 'length' => '45', 'default' => '',),
         'openid' => array('type' => 'string', 'null' => true, 'length' => '180', 'default' => '',),
         'login_date' => array('type' => 'date', 'null' => true, 'length' => '', 'default' => '',),
         'out_date' => array('type' => 'date', 'null' => true, 'length' => '', 'default' => '',),
-        'order_id' => array('type' => 'integer', 'null' => true, 'length' => '11', 'default' => '',),
-        'phone' => array('type' => 'integer', 'null' => true, 'length' => '45', 'default' => '',),
+        'cellphone' => array('type' => 'integer', 'null' => true, 'length' => '45', 'default' => '',),
         'status' => array('type' => 'integer', 'null' => true, 'length' => '11', 'default' => '',),
         'wx_appid' => array('type' => 'string', 'null' => true, 'length' => '90', 'default' => '',),
+        'wx_avatar' => array('type' => 'string', 'null' => true, 'length' => '255', 'default' => '',),
 
     );
     //array('attr'=>array('from'=>'id','to'=>'id','class'=>'','type'=>'one-one||one-many') )
@@ -108,17 +102,28 @@ class User_Model extends YZE_Model
     );
 
     /**
-     * 查询该店铺的微信用户数
-     * @param $wx_appid
-     * @author weiqianlai 2020-04-19
+     * @param $openid
+     * @return object
+     * @author weiqianlai 20200422
      */
-    public function get_user_count($wx_appid)
+    public function find_by_openid($openid)
     {
         return User_Model::from()
-            ->where("wx_appid=:wx_appid")
-            ->count('id', [":wx_appid" => $wx_appid]);
+            ->where("openid=:openid")
+            ->getSingle([":openid" => $openid]);
     }
 
+    /**
+     * @param $wx_aapid
+     * @return array
+     * @author weiqianlai 20200425
+     */
+    public function find_by_wxAppid($wx_aapid)
+    {
+        return User_Model::from()
+            ->where('wx_appid=:wx_appid')
+            ->select([':wx_appid' => $wx_aapid]);
+    }
 
 }
 

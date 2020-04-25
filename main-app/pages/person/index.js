@@ -1,5 +1,5 @@
 // pages/person/index.js
-const APP = getApp();
+const app = getApp();
 Page({
 
   /**
@@ -60,38 +60,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-      wx.getSetting({
-        success(res) {
-          console.log('aa', res)
-          if (res.authSetting['scope.userInfo']) {
-            var alredys = 1;
-            that.setData({
-              alredys: alredys
-            })
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            wx.getUserInfo({
-              success: function(res) {
-                console.log(res);
-              }
-            })
-          } else {
-            alredys = 2;
-            that.setData({
-              alredys: alredys
-            })
-          }
-        }
-      })
+
   },
   /**
- * 长按复制
- */
-  copy: function (e) {
+   * 长按复制
+   */
+  copy: function(e) {
     var that = this;
     wx.setClipboardData({
       data: '收货人：佰川贵州回收部，电话：181-9857-5678， 地址：贵州省贵阳市南明区和丰大厦商城-1楼1号',
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         wx.showToast({
           title: '复制成功',
@@ -99,35 +77,26 @@ Page({
       }
     });
   },
-  bindGetUserInfo(e) {
+  bindGetUserInfo: function () {
     var that = this;
-    console.log(e.detail.userInfo)
-    wx.login({
-      success: function(res) {
-        console.log(res.code);
-        wx.request({
-          url: APP.API + 'login',
-          method: 'GET',
-          data: {
-            code: res.code,
-            avatar_url: e.detail.userInfo.avatarUrl,
-            city: e.detail.userInfo.province
-          },
-          success: function(res) {
-            console.log("后台返回的=====>", res);
-            var user_id = res.data.openid;
-            wx.setStorageSync("user_id", user_id);
-            //wx.setStorageSync("phone_", data)
-            //console.log("user_id", user_id);
-            var sue = 1;
-            that.setData({
-              alredys: sue
-            })
-            wx.showToast({
-              title: '登陆成功!',
-            })
-          }
-        })
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              var page_id = 1;
+              var userInfo = res.userInfo;
+              app.globalData.wx_user_info.nickName = userInfo.nickName;
+              app.globalData.wx_user_info.avatar = userInfo.avatarUrl;
+              app.globalData.wx_user_info.gender = userInfo.gender;
+              app.getWXUserInfo(page_id); //存信息
+              that.setData({
+                wx_user_info: res.userInfo
+              })
+            }
+          })
+        }
       }
     })
   },
@@ -149,7 +118,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (app.globalData.wx_user_info.nickName == null) {
+      wx.showToast({
+        title: '请先授权登录!',
+        icon: 'none',
+        duration: 3000,
+        mask: true,
+      })
+    }else{
+      this.setData({
+        wx_user_info: app.globalData.wx_user_info
+      })
+    }
   },
 
   /**

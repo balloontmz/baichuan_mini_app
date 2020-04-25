@@ -1,6 +1,21 @@
+<view class="register" wx:if="{{!wx_user_info.nickName}}">
+  <view style='margin-top:100rpx;color:#ffffff'>Hi, 等你好久了!</view>
+  <button class="userinfo-btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo='bindGetUserInfo'>授权登录</button>
+</view>
 <view class='main-box'>
-  <view class="user-box" wx:if="{{alredys==2}}">
-    <button open-type="getUserInfo" class="button" bindgetuserinfo="bindGetUserInfo" wx:if="{{!wxOpenInfo.nickName}}">请先登陆</button>
+  <view class="header" wx:if="{{wx_user_info.nickName}}">
+    <view class="user-info">
+      <view class="avatar_name">
+        <image src="{{wx_user_info.avatarUrl}}"></image>
+        <view class="text-box">
+          <text class="username">{{wx_user_info.nickName}}</text>
+          <text class="phone" wx:if="{{wx_user_info.cellphone || cellphone}}">手机号：{{wx_user_info.cellphone || cellphone}}</text>
+        </view>
+      </view>
+      <view>
+        <button wx:if="{{wx_user_info.cellphone==null && cellphone==null}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
+      </view>
+    </view>
   </view>
   <scroll-view class='nav-scroll' scroll-y="true">
     <view class="row">
@@ -31,6 +46,8 @@
   </view>
   <view class="botton-box">
     <view class="lianxi" bindtap="phoneCall" data-phone="18198575678">联系门店</view>
-    <view class="lianxi"><text selectable='true' bindlongtap='copy'>复制信息</text></view>
+    <view class="lianxi">
+      <text selectable='true' bindlongtap='copy'>复制信息</text>
+    </view>
   </view>
 </view>
