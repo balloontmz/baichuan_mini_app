@@ -15,7 +15,7 @@
   <view class="content-wrapper">
     <view class="brand-cols-wrapper">
       <scroll-view class="brand-cols" scrollTop="{{brandScrollTop}}" scrollY="true">
-        <view bindtap="brandTapHandler" class="brand-col{{item.id==uuid?' current':''}}" data-bid="{{item.id}}" wx:for="{{brandList}}" wx:key="{{index}}">{{item.first_name}}
+        <view bindtap="brandTapHandler" class="brand-col{{item.id==first_product_id?' current':''}}" data-bid="{{item.id}}" wx:for="{{brandList}}" wx:key="{{index}}">{{item.first_name}}
         </view>
       </scroll-view>
     </view>

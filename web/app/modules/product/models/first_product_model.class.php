@@ -55,6 +55,17 @@ class First_Product_Model extends YZE_Model{
     protected $unique_key = array (
   'id' => 'PRIMARY',
 );
+
+    /**
+     * @param $type_id
+     * @return array
+     * @author weiqianlai 20200425
+     */
+    public function get_by_type_id($type_id){
+        return First_Product_Model::from()
+            ->where("product_type_id=:product_type_id")
+            ->select([":product_type_id"=>$type_id]);
+    }
     		
     
 	

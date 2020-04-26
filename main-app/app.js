@@ -2,6 +2,7 @@
 App({
   // API: "http://127.0.0.1:8090/",
   API: "https://www.bckj.store/",
+  NEW_API:"http://192.168.43.133",
   globalData: {
     jump_tyep: null,
     wx_user_info: {
@@ -61,7 +62,7 @@ App({
     console.log(that.globalData.wx_user_info)
     var page_id = page_id;
     wx.request({
-      url: 'http://baichuan.localhost' + "/signin.json", //登录获取信息的接口
+      url: this.NEW_API + "/signin.json", //登录获取信息的接口
       method: "post",
       data: that.globalData.wx_user_info,
       header: {

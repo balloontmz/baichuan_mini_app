@@ -1,5 +1,6 @@
 // pages/person/index.js
 const app = getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -77,17 +78,18 @@ Page({
       }
     });
   },
-  bindGetUserInfo: function () {
+  bindGetUserInfo: function() {
     var that = this;
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
-            success: function (res) {
+            success: function(res) {
               var page_id = 1;
               var userInfo = res.userInfo;
               app.globalData.wx_user_info.nickName = userInfo.nickName;
+              wx.setStorageSync("nickName", userInfo.nickName);
               app.globalData.wx_user_info.avatar = userInfo.avatarUrl;
               app.globalData.wx_user_info.gender = userInfo.gender;
               app.getWXUserInfo(page_id); //存信息
@@ -100,10 +102,27 @@ Page({
       }
     })
   },
-  phoneCall: function(e) {
-    console.log("aaa", e.currentTarget.dataset.phone);
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone,
+  /**
+   * 获取用户手机号
+   */
+  getPhoneNumber(e) {
+    var that = this;
+    var data = {
+      session_key: app.globalData.wx_user_info.session_key,
+      iv: e.detail.iv,
+      encryptedData: e.detail.encryptedData,
+      openid: wx.getStorageSync('openid')
+    }
+    wx.login({
+      success: (res) => {
+        util.post(app.NEW_API + '/api/cellphone.json', data, (res) => {
+          app.globalData.wx_user_info.cellphone = res.phoneNumber;
+          wx.setStorageSync("cellphone", res.phoneNumber);
+          that.setData({
+            cellphone: res.phoneNumber
+          })
+        })
+      }
     })
   },
 
@@ -125,7 +144,7 @@ Page({
         duration: 3000,
         mask: true,
       })
-    }else{
+    } else {
       this.setData({
         wx_user_info: app.globalData.wx_user_info
       })

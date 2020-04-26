@@ -31,19 +31,17 @@ Page({
       second_id: second_id
     })
     wx.request({
-      url: app.API + "getAttributeAndValue",
+      url: app.NEW_API + "/api/attribute",
       data: {
-        second_id: second_id
+        product_id: second_id
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
+      method: 'post',
       success: function(res) {
         that.setData({
-          attributeList: res.data,
+          attributeList: res.data.data,
           phoneName: second_name,
           comments: comments
         })

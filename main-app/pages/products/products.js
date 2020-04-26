@@ -2,7 +2,7 @@ const app = getApp()
 Page({
   data: {
     cisd: 1,
-    uuid:7,
+    uuid: 7,
     cateList: [{
       classname: "手机",
       id: 1
@@ -24,51 +24,43 @@ Page({
     productScrollTop: 0,
     left: 0,
     iconSearch: "../../img/icon-search.svg",
-    jump_id:null
+    jump_id: null
   },
-  onLoad: function () {
+  onLoad: function(option) {
     var that = this;
-    var jumpId = wx.getStorageSync('jump_id') == "" ? 1 : wx.getStorageSync('jump_id');
     wx.request({
-      url: app.API + "getListByTypeId",
+      url: app.NEW_API + "/api/first_product.json",
+      method: "post",
       data: {
-        type_id: jumpId
+        type_id: 11
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
-        let data_arry = new Array;
-        data_arry = res.data;
-        var f_id = data_arry[0].id;
+      success: function(res) {
+        var f_id = res.data.data[0].id;
         that.setData({
-          brandList: res.data,
-          cisd: jumpId
+          brandList: res.data.data,
+          first_product_id: res.data.data[0].id
         })
         wx.request({
-          url: app.API + "getListByFirstId",
+          url: app.NEW_API + "/api/product.json",
+          method: "post",
           data: {
-            first_id: f_id
+            first_product_id: f_id
           },
           header: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded'
           },
-          method: 'GET',
-          dataType: 'json',
-          responseType: 'text',
-          success: function (res) {
-            // console.log(res.data);
+          success: function(res) {
             that.setData({
-              productList: res.data
+              productList: res.data.data
             })
           },
         })
       },
-      fail: function (res) { },
-      complete: function (res) { },
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
 
@@ -82,7 +74,7 @@ Page({
   cateTapHandler: function(e) {
     var id = e.target.dataset.cid;
     wx.setStorageSync('jump_id', id)
-    var arr = [1,2,3];
+    var arr = [1, 2, 3];
     var crurrnt = false;
     for (var i = 0; i < arr.length; i++) {
       if (id == arr[i]) {
@@ -105,7 +97,7 @@ Page({
         let data_arry = new Array;
         data_arry = res.data;
         var f_id = data_arry[0].id;
-        console.log("aaa",f_id);
+        console.log("aaa", f_id);
         that.setData({
           brandList: res.data,
           cisd: cisd
@@ -121,7 +113,7 @@ Page({
           method: 'GET',
           dataType: 'json',
           responseType: 'text',
-          success: function (res) {
+          success: function(res) {
             that.setData({
               productList: res.data,
               uuid: f_id
@@ -165,28 +157,32 @@ Page({
   },
   onShow: function() {
     var that = this;
-    
-    var openid = wx.getStorageSync("user_id");
-    if (openid == "") {
+    var nickName = wx.getStorageSync("nickName");
+    var cellphone = wx.getStorageSync("cellphone");
+    if (!nickName) {
       wx.switchTab({
         url: "../person/index",
       })
-    }
-     else{
-      wx.request({
-        url: app.API + 'isBindPhone',
-        method: 'GET',
-        data: {
-          openid: openid
-        },
-        success: function(res) {
-          if (res.data == 0) {
-            wx.redirectTo({
-              url: '../bind/bind',
+    } else if (!cellphone) {
+      wx.showModal({
+        title: '提示',
+        content: '为了给您提供更好的服务，请先前往个人中心绑定手机号哦！',
+        cancelText: '暂不',
+        confirmText: '前往',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../person/index',
+            })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '../person/index',
             })
           }
         }
       })
+    } else {
+      return;
     }
   },
   onShareAppMessage: function(t) {}

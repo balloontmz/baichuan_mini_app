@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/vendor/helper/user_search.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/api/__module__.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/api/controllers/phone_controller.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/api/views/index-index.tpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../main-app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../main-app/pages/person/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/person/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/pages/person/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/person/index.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../main-app/pages/person/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/person/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/utils/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/utils/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/common/hooks/sign_auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/common/hooks/sign_auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/controllers/index_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product/models/first_product_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product/models/first_product_model.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/user/models/user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/user_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/views/index-index.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/index-index.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/index-index.tpl.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/work-space/river_check/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -50,11 +49,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\baichuan-work\baichuan_mini_app\web\app\modules\api\controllers" />
       <recent name="D:\baichuan-work\baichuan_mini_app\web\app\public_html\img" />
       <recent name="D:\baichuan-work\web\app\vendor" />
       <recent name="D:\baichuan-work\web\app\public_html\img" />
       <recent name="D:\baichuan-work\web\app" />
-      <recent name="D:\baichuan-work\web\app\public_html" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -144,7 +143,8 @@
       <workItem from="1587653093288" duration="404000" />
       <workItem from="1587794380081" duration="1056000" />
       <workItem from="1587796237090" duration="150000" />
-      <workItem from="1587796513724" duration="8066000" />
+      <workItem from="1587796513724" duration="16722000" />
+      <workItem from="1587910067189" duration="7419000" />
     </task>
     <servers />
   </component>
