@@ -11,12 +11,14 @@ use app\product_quote\Product_Price_Model;
 use app\product_quote\Product_Quote_Module;
 use app\user\Store_Option_Model;
 use app\user\Store_User_Model;
+use app\vendor\helper\Product_Search;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
 use \yangzie\YZE_Session_Context;
 use \yangzie\YZE_RuntimeException;
 use \yangzie\YZE_JSON_View;
+use yangzie\YZE_SQL;
 
 /**
  *
@@ -142,6 +144,28 @@ class Index_Controller extends YZE_Resource_Controller
 
         }
         return YZE_JSON_View::success($this, $datas);
+    }
+
+    //模糊查询机型
+    public function post_query_product()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $product_search = new Product_Search();
+        $name = $request->get_from_post('query');
+        $product_search->page = $request->get_from_post("page", 1);
+        $product_search->pagesize = $request->get_from_post("limit", 100);
+        $product_search->page = 1;
+        $product_search->product_name = trim($name);
+        $product_datas = $product_search->build_sql(new YZE_SQL(), $totalcnt);
+        $datas=[];
+        $i=0;
+        foreach ($product_datas as $item){
+            $datas[$i]['id'] = $item->id;
+            $datas[$i]['second_name'] = $item->name;
+            $i++;
+        }
+        return YZE_JSON_View::success($this,$datas);
     }
 
     public function exception(YZE_RuntimeException $e)

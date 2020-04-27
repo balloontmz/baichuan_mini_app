@@ -49,6 +49,12 @@ class Api_Module extends YZE_Base_Module
                         "action" => "product_quote"
                     ),
                 ),
+                'api/query_product' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "query_product"
+                    ),
+                ),
             )
         );
     }

@@ -20,22 +20,17 @@ Page({
   getKeyw:function(e){
     var that = this;
     wx.request({
-      url: app.API + "searchIdAndName",
+      url: app.NEW_API + "/api/query_product.json",
+      method: "post",
       data: {
-        second_name: e.detail.value,
-        start: 0,
-        size: 100
+        query: e.detail.value,
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
       success: function (res) {
-        console.log("查询结果", res)
         that.setData({
-          phoneList: res.data
+          phoneList: res.data.data
         })
       }
     })

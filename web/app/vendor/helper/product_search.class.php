@@ -32,7 +32,7 @@ class Product_Search extends Base_Search
     public $pagesize;
 
     /**
-     * 活动所属的团队
+     * 机型名称
      * @var string
      */
     public $product_name;
@@ -42,7 +42,7 @@ class Product_Search extends Base_Search
         try {
             $sql->from(Product_Model::CLASS_NAME, "p");
             if ($this->product_name)
-                $sql->where("p", Product_Model::F_NAME, YZE_SQL::EQ, $this->product_name);
+                $sql->where("p", Product_Model::F_NAME, YZE_SQL::LIKE, $this->product_name);
 
             $sql->limit(($this->page - 1) * $this->pagesize, $this->pagesize);
             $activity_list = YZE_DBAImpl::getDBA()->select($sql);

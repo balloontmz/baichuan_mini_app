@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../main-app/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/project.config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/api/__module__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/__module__.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/models/product_price_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/models/product_price_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_option_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_option_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/models/user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/user_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_user-index.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_user-index.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/vendor/helper/product_search.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/helper/product_search.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +138,8 @@
       <workItem from="1587796237090" duration="150000" />
       <workItem from="1587796513724" duration="16722000" />
       <workItem from="1587910067189" duration="8153000" />
-      <workItem from="1587996090767" duration="6034000" />
+      <workItem from="1587996090767" duration="7153000" />
+      <workItem from="1588003902557" duration="421000" />
     </task>
     <servers />
   </component>
@@ -164,10 +162,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1586591062825" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587801634770">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588003785174">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587801634770" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588003785174" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1587804283597">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
