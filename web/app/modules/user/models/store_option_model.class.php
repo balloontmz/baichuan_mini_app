@@ -74,7 +74,7 @@ class Store_Option_Model extends YZE_Model
     /**
      * @param $first_product_id
      * @param $store_user_id
-     * @return array
+     * @return Store_Option_Model
      * @author weiqianlai
      */
     public function get_by_fpsu_id($store_user_id, $first_product_id)

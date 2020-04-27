@@ -3,10 +3,14 @@
 namespace app\api;
 
 use app\attribute\First_Attribute_Model;
+use app\attribute\Quote_Standard_Model;
 use app\attribute\Second_Attribute_Model;
 use app\product\First_Product_Model;
 use app\product\Product_Model;
 use app\product_quote\Product_Price_Model;
+use app\product_quote\Product_Quote_Module;
+use app\user\Store_Option_Model;
+use app\user\Store_User_Model;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
@@ -69,36 +73,74 @@ class Index_Controller extends YZE_Resource_Controller
         $this->layout = '';
         $product_id = $request->get_from_post('product_id');
         $product = Product_Price_Model::get_by_product_id($product_id);
-        $second_attri = explode("_", $product[0]->second_attribute_ids);
-        $second_arr = [];
-        $second_arr_name = [];
-        $datas = [];
-        for ($j = 0; $j < count($product); $j++) {
-            $second_attribute_ids = $product[$j]->second_attribute_ids;
-            $second_arr[$j] = explode("_", $second_attribute_ids);
-        }
-        for ($i = 0; $i < count($second_arr); $i++) {
-            for ($j = 0; $j < count($second_arr[$i]); $j++) {
-                $second_arr_name[$j]['second_name'] .= Second_Attribute_Model::find_by_id($second_arr[$i][$j])->name . ",";
-                $second_arr_name[$j]['id'] .= $second_arr[$i][$j] . ",";
+        if ($product) {
+            $second_attri = explode("_", $product[0]->second_attribute_ids);
+            $second_arr = [];
+            $second_arr_name = [];
+            $datas = [];
+            for ($j = 0; $j < count($product); $j++) {
+                $second_attribute_ids = $product[$j]->second_attribute_ids;
+                $second_arr[$j] = explode("_", $second_attribute_ids);
             }
-        }
-        $second_name_obj_arr = [];
-        for ($i = 0; $i < count($second_arr_name); $i++) {
-            $second_arr_name_a[$i] = array_unique(explode(",", $second_arr_name[$i]['second_name'])); //转化为数组后再去重
-            $second_arr_id_a[$i] = array_unique(explode(",", $second_arr_name[$i]['id']));  //去重
-            for ($j = 0; $j < count($second_arr_name_a[$i]); $j++) {
-                if ($second_arr_name_a[$i][$j] != "" && $second_arr_id_a[$i][$j] != "") {//去掉空的
-                    $second_name_obj_arr[$i][$j]['attr_value'] = $second_arr_name_a[$i][$j];
-                    $second_name_obj_arr[$i][$j]['id'] = $second_arr_id_a[$i][$j];
+            for ($i = 0; $i < count($second_arr); $i++) {
+                for ($j = 0; $j < count($second_arr[$i]); $j++) {
+                    $second_arr_name[$j]['second_name'] .= Second_Attribute_Model::find_by_id($second_arr[$i][$j])->name . ",";
+                    $second_arr_name[$j]['id'] .= $second_arr[$i][$j] . ",";
                 }
             }
+            $second_name_obj_arr = [];
+            for ($i = 0; $i < count($second_arr_name); $i++) {
+                $second_arr_name_a[$i] = array_unique(explode(",", $second_arr_name[$i]['second_name'])); //转化为数组后再去重
+                $second_arr_id_a[$i] = array_unique(explode(",", $second_arr_name[$i]['id']));  //去重
+                for ($j = 0; $j < count($second_arr_name_a[$i]); $j++) {
+                    if ($second_arr_name_a[$i][$j] != "" && $second_arr_id_a[$i][$j] != "") {//去掉空的
+                        $second_name_obj_arr[$i][$j]['attr_value'] = $second_arr_name_a[$i][$j];
+                        $second_name_obj_arr[$i][$j]['id'] = $second_arr_id_a[$i][$j];
+                        $second_name_obj_arr[$i][$j]['attr_id'] = Second_Attribute_Model::find_by_id($second_arr_id_a[$i][$j])->first_attribute_id;
+                    }
+                }
+            }
+            for ($i = 0; $i < count($second_attri); $i++) {
+                $datas[$i]['attr_name'] = First_Attribute_Model::find_by_id(Second_Attribute_Model::find_by_id($second_attri[$i])->first_attribute_id)->name;
+                $datas[$i]['child'] = $second_name_obj_arr[$i];
+            }
+            return YZE_JSON_View::success($this, $datas);
+        } else {
+            return YZE_JSON_View::success($this);
         }
-        for ($i = 0; $i < count($second_attri); $i++) {
-            $datas[$i]['attr_name'] = First_Attribute_Model::find_by_id(Second_Attribute_Model::find_by_id($second_attri[$i])->first_attribute_id)->name;
-            $datas[$i]['child'] = $second_name_obj_arr[$i];
-        }
+    }
 
+    //根据组合和产品id获取报价标准
+    public function post_product_quote()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $filter = $request->get_from_post('filter');
+        $product_id = $request->get_from_post('second_id');
+        $wx_appid = $request->get_from_post('wx_appid');
+        $wx_app_role = Store_User_Model::get_by_wx_appid(trim($wx_appid));
+
+        $first_product_id = Product_Model::find_by_id($product_id)->first_product_id; //找出一级产品id
+        $store_second = Store_Option_Model::get_by_fpsu_id($wx_app_role->id, $first_product_id);
+
+        $result = Product_Price_Model::get_by_filter($product_id, trim($filter));
+        $quote_standard_id_arr = explode(",", $result->quote_standard_ids);
+        $price_arr = explode(",", $result->price);
+        $datas = [];
+        for ($i = 0; $i < count($quote_standard_id_arr); $i++) {
+            if ($wx_app_role->tyoe == 'admin') {
+                $datas[$i]['describes'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->desc;
+                $datas[$i]['id'] = $quote_standard_id_arr[$i];
+                $datas[$i]['sta_name'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->name;
+                $datas[$i]['price'] = $price_arr[$i];
+            } else {
+                $datas[$i]['describes'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->desc;
+                $datas[$i]['id'] = $quote_standard_id_arr[$i];
+                $datas[$i]['sta_name'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->name;
+                $datas[$i]['price'] = $store_second->symbol == '-1' ? intval($price_arr[$i]) - intval($store_second->store_price) : intval($price_arr[$i]) + intval($store_second->store_price);
+            }
+
+        }
         return YZE_JSON_View::success($this, $datas);
     }
 

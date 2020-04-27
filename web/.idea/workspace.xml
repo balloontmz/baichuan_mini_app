@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/api/__module__.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/api/controllers/phone_controller.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/api/views/index-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/pages/person/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/person/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/pages/person/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/person/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product/models/first_product_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product/models/first_product_model.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/__module__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/__module__.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/models/product_price_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/models/product_price_model.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_option_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_option_model.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/user/models/user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/user_model.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_user-index.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_user-index.json.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +140,8 @@
       <workItem from="1587794380081" duration="1056000" />
       <workItem from="1587796237090" duration="150000" />
       <workItem from="1587796513724" duration="16722000" />
-      <workItem from="1587910067189" duration="7419000" />
+      <workItem from="1587910067189" duration="8153000" />
+      <workItem from="1587996090767" duration="6034000" />
     </task>
     <servers />
   </component>
@@ -195,9 +192,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587225056685" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1587308288817">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1588000513217">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1587308288817" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1588000513217" />
   </component>
 </project>

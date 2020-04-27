@@ -125,24 +125,22 @@ Page({
 
     var that = this;
     var filter = that.data.filter;
-
-    console.log("filter", filter);
+    let wx_appid =  wx.getStorageSync("wx_appid");
     wx.request({
-      url: app.API + "getAssess",
+      url: app.NEW_API + "/api/product_quote",
       data: {
         filter,
-        second_id
+        second_id,
+        wx_appid
       },
-      // header: {
-      //   'Content-Type': 'application/x-www-form-urlencoded'
-      // },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'post',
       success: function(res) {
         console.log(res);
         that.setData({
-          baojiaList: res.data
+          baojiaList: res.data.data
         })
       }
     })
@@ -203,7 +201,6 @@ Page({
     var baojialist = new Array;
     baojialist = this.data.baojiaList;
     for (var i = 0; i < baojialist.length; i++) {
-      console.log("aaa")
       if (oid == baojialist[i].id) {
         this.setData({
           stand: baojialist[i].describes,

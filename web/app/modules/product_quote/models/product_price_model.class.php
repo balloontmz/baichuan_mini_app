@@ -78,6 +78,18 @@ class Product_Price_Model extends YZE_Model{
             ->where("product_id=:product_id")
             ->select([":product_id"=>$product_id]);
     }
+
+    /**
+     * @param $product_id
+     * @param $filter
+     * @return object
+     * @author weiqianlai 2020-04-27
+     */
+    public function get_by_filter($product_id,$filter){
+        return Product_Price_Model::from()
+            ->where("product_id=:product_id AND second_attribute_ids=:filter")
+            ->getSingle([":product_id"=>$product_id,":filter"=>$filter]);
+    }
     
 	
 }?>

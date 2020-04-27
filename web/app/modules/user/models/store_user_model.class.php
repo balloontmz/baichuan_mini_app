@@ -121,6 +121,19 @@ class Store_User_Model extends YZE_Model
             ->select();
     }
 
+    /**
+     * @param $wx_appid
+     * @return Store_User_Model
+     * @author weiqianlai 2020-04-27
+     */
+
+    public function get_by_wx_appid($wx_appid)
+    {
+        return Store_User_Model::from()
+            ->where('wx_appid=:wx_appid')
+            ->getSingle([':wx_appid' => $wx_appid]);
+    }
+
 
 }
 

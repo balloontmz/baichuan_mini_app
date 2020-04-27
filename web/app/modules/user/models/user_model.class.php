@@ -121,6 +121,18 @@ class User_Model extends YZE_Model{
             ->where('wx_appid=:wx_appid')
             ->select([':wx_appid' => $wx_aapid]);
     }
+
+    /**
+     * @param $wx_aapid
+     * @return int
+     * @author weiqianlai 20200425
+     */
+    public function get_user_count($wx_aapid)
+    {
+        return User_Model::from()
+            ->where('wx_appid=:wx_appid')
+            ->count("id",[':wx_appid' => $wx_aapid]);
+    }
     		
     
 	

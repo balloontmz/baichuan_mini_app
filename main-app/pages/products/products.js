@@ -5,13 +5,13 @@ Page({
     uuid: 7,
     cateList: [{
       classname: "手机",
-      id: 1
+      id: 11
     }, {
       classname: "平板",
-      id: 2
+      id: 12
     }, {
       classname: "笔记本",
-      id: 3
+      id: 13
     }],
     brandList: [{
       productList: []
@@ -40,6 +40,7 @@ Page({
       success: function(res) {
         var f_id = res.data.data[0].id;
         that.setData({
+          cisd: 11,
           brandList: res.data.data,
           first_product_id: res.data.data[0].id
         })
@@ -73,8 +74,8 @@ Page({
   },
   cateTapHandler: function(e) {
     var id = e.target.dataset.cid;
-    wx.setStorageSync('jump_id', id)
-    var arr = [1, 2, 3];
+    // wx.setStorageSync('jump_id', id)
+    var arr = [11, 12, 13];
     var crurrnt = false;
     for (var i = 0; i < arr.length; i++) {
       if (id == arr[i]) {
@@ -83,40 +84,33 @@ Page({
     }
     var that = this;
     wx.request({
-      url: app.API + "getListByTypeId",
+      url: app.NEW_API + "/api/first_product.json",
+      method: "post",
       data: {
         type_id: id
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
       success: function(res) {
-        let data_arry = new Array;
-        data_arry = res.data;
-        var f_id = data_arry[0].id;
-        console.log("aaa", f_id);
+        var f_id = res.data.data[0].id;
         that.setData({
-          brandList: res.data,
-          cisd: cisd
+          brandList: res.data.data,
+          first_product_id: res.data.data[0].id,
+          cisd: id
         })
         wx.request({
-          url: app.API + "getListByFirstId",
+          url: app.NEW_API + "/api/product.json",
+          method: "post",
           data: {
-            first_id: f_id
+            first_product_id: f_id
           },
           header: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded'
           },
-          method: 'GET',
-          dataType: 'json',
-          responseType: 'text',
           success: function(res) {
             that.setData({
-              productList: res.data,
-              uuid: f_id
+              productList: res.data.data
             })
           },
         })
@@ -134,25 +128,22 @@ Page({
       if (id == arr1[a]) {
         var uuid = arr1[a]
       }
-      console.log(id == arr1[a])
     }
     wx.request({
-      url: app.API + "getListByFirstId",
+      url: app.NEW_API + "/api/product.json",
+      method: "post",
       data: {
-        first_id: id
+        first_product_id: id
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
       success: function(res) {
         that.setData({
-          productList: res.data,
-          uuid: uuid
+          productList: res.data.data,
+          first_product_id: id
         })
-      }
+      },
     })
   },
   onShow: function() {

@@ -117,6 +117,7 @@ App({
     wx.setStorageSync("openid", this.globalData.wx_user_info.openid); //用户身份id
     wx.setStorageSync("cellphone", this.globalData.wx_user_info.cellphone);
     wx.setStorageSync("avatarUrl", this.globalData.wx_user_info.avatarUrl);
-    wx.setStorageSync("nickName", this.globalData.wx_user_info.nickName)
+    wx.setStorageSync("nickName", this.globalData.wx_user_info.nickName);
+    wx.setStorageSync("wx_appid", "wx7717d96c45ce7e7d");
   }
 })
