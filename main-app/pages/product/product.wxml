@@ -34,7 +34,7 @@
           <view class="biaozhun-text" bindtap="wqd" data-oid="{{item.id}}">报价标准</view>
           <radio-group bindchange="checkboxChange" name="baojia_id">
             <label class="checkbox">
-              <radio value='{{item.id}}' bindtap='radio' data-id="{{item.id}}" checked="{{item.id==id}}" />
+              <radio value='{{item.id}}' bindtap='radio' data-id="{{item.id}}" checked="{{item.id==id}}" data-price="{{item.price}}" />
             </label>
           </radio-group>
         </view>

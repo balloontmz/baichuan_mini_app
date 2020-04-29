@@ -55,6 +55,12 @@ class Api_Module extends YZE_Base_Module
                         "action" => "query_product"
                     ),
                 ),
+                'api/order' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "order"
+                    ),
+                ),
             )
         );
     }

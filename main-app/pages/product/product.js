@@ -15,7 +15,11 @@ Page({
     second_id: null,
     filter: '',
     baojiaList: [],
-    stand: ''
+    stand: '',
+
+    //以下是提交订单的数据
+    product_price:"",//产品价格(单价)
+    filter_price:""
   },
 
   /**
@@ -97,7 +101,6 @@ Page({
     searchModel.forEach(el => {
       searchModelArr.push(el)
     })
-    console.log("aaa", f)
     // 发送请求
     if (searchModelArr.length == attributeList.length) {
       var tempArr = [];
@@ -147,6 +150,7 @@ Page({
   },
   radio: function(e) {
     var id = e.currentTarget.dataset.id;
+    this.data.product_price = e.currentTarget.dataset.price;
     // wx.setStorageSync("assess_id", id)
     this.setData({
       id: id,
@@ -154,13 +158,11 @@ Page({
     })
   },
   go_order: function(e) {
-    var currenTime = util.formatTime(new Date());
-    console.log("时间", currenTime);
-    var user_id = wx.getStorageSync("user_id");
+    let that = this;
+    var user_id = wx.getStorageSync("openid");
     var second_id = wx.getStorageSync("second_id");
-    // var assess_id = wx.getStorageSync("assess_id");   //这里不应该用缓存，后期会改进
+    var wx_appid = wx.getStorageSync("wx_appid");
     var assess_id = this.data.id;
-    console.log("===>", assess_id)
     if (!assess_id) {
       wx.showModal({
         title: "信息提示",
@@ -168,20 +170,23 @@ Page({
       })
     } else {
       wx.request({
-        url: app.API + "addOrder",
+        url: app.NEW_API + "/api/order",
         data: {
           openid: user_id,
-          second_id: second_id,
-          assess_id: assess_id,
-          orderTime: currenTime
+          wx_appid: wx_appid,
+          stand_id: assess_id,
+          price : that.data.product_price,
+          filter: that.data.filter,
+          product_id: second_id,
         },
-        method: 'GET',
-        dataType: 'json',
-        responseType: 'text',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'post',
         success: function(res) {
-          var order_id = res.data.id;
-          console.log("下单返回", res)
-          if (res.data.code == 1) {
+          var order_id = res.data.data;
+          console.log("下单返回", order_id)
+          if (res.data.success) {
             wx.redirectTo({
               url: '../order/order?orderid=' + order_id,
             })

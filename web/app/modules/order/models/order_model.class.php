@@ -54,6 +54,16 @@ class Order_Model extends YZE_Model{
      * @var integer
      */
     const F_COUNT = "count";
+    /**
+     * 
+     * @var date
+     */
+    const F_ORDER_TIME = "order_time";
+    /**
+     * 
+     * @var string
+     */
+    const F_WX_APPID = "wx_appid";
     public static $columns = array(
                'id'         => array('type' => 'integer', 'null' => false,'length' => '11','default'	=> '',),
        'uuid'       => array('type' => 'string', 'null' => false,'length' => '45','default'	=> '',),
@@ -62,6 +72,8 @@ class Order_Model extends YZE_Model{
        'desc'       => array('type' => 'string', 'null' => true,'length' => '200','default'	=> '',),
        'price'      => array('type' => 'string', 'null' => true,'length' => '255','default'	=> '',),
        'count'      => array('type' => 'integer', 'null' => true,'length' => '11','default'	=> '',),
+       'order_time' => array('type' => 'date', 'null' => true,'length' => '','default'	=> '',),
+       'wx_appid'   => array('type' => 'string', 'null' => true,'length' => '255','default'	=> '',),
 
     );
     //array('attr'=>array('from'=>'id','to'=>'id','class'=>'','type'=>'one-one||one-many') )

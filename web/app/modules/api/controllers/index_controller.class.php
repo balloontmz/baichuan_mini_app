@@ -5,12 +5,14 @@ namespace app\api;
 use app\attribute\First_Attribute_Model;
 use app\attribute\Quote_Standard_Model;
 use app\attribute\Second_Attribute_Model;
+use app\order\Order_Model;
 use app\product\First_Product_Model;
 use app\product\Product_Model;
 use app\product_quote\Product_Price_Model;
 use app\product_quote\Product_Quote_Module;
 use app\user\Store_Option_Model;
 use app\user\Store_User_Model;
+use app\user\User_Model;
 use app\vendor\helper\Product_Search;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
@@ -128,22 +130,26 @@ class Index_Controller extends YZE_Resource_Controller
         $result = Product_Price_Model::get_by_filter($product_id, trim($filter));
         $quote_standard_id_arr = explode(",", $result->quote_standard_ids);
         $price_arr = explode(",", $result->price);
-        $datas = [];
-        for ($i = 0; $i < count($quote_standard_id_arr); $i++) {
-            if ($wx_app_role->tyoe == 'admin') {
-                $datas[$i]['describes'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->desc;
-                $datas[$i]['id'] = $quote_standard_id_arr[$i];
-                $datas[$i]['sta_name'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->name;
-                $datas[$i]['price'] = $price_arr[$i];
-            } else {
-                $datas[$i]['describes'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->desc;
-                $datas[$i]['id'] = $quote_standard_id_arr[$i];
-                $datas[$i]['sta_name'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->name;
-                $datas[$i]['price'] = $store_second->symbol == '-1' ? intval($price_arr[$i]) - intval($store_second->store_price) : intval($price_arr[$i]) + intval($store_second->store_price);
-            }
+        if ($result) {
+            $datas = [];
+            for ($i = 0; $i < count($quote_standard_id_arr); $i++) {
+                if ($wx_app_role->tyoe == 'admin') {
+                    $datas[$i]['describes'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->desc;
+                    $datas[$i]['id'] = $quote_standard_id_arr[$i];
+                    $datas[$i]['sta_name'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->name;
+                    $datas[$i]['price'] = $price_arr[$i];
+                } else {
+                    $datas[$i]['describes'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->desc;
+                    $datas[$i]['id'] = $quote_standard_id_arr[$i];
+                    $datas[$i]['sta_name'] = Quote_Standard_Model::find_by_id($quote_standard_id_arr[$i])->name;
+                    $datas[$i]['price'] = $store_second->symbol == '-1' ? intval($price_arr[$i]) - intval($store_second->store_price) : intval($price_arr[$i]) + intval($store_second->store_price);
+                }
 
+            }
+            return YZE_JSON_View::success($this, $datas);
+        } else {
+            return YZE_JSON_View::success($this);
         }
-        return YZE_JSON_View::success($this, $datas);
     }
 
     //模糊查询机型
@@ -158,14 +164,53 @@ class Index_Controller extends YZE_Resource_Controller
         $product_search->page = 1;
         $product_search->product_name = trim($name);
         $product_datas = $product_search->build_sql(new YZE_SQL(), $totalcnt);
-        $datas=[];
-        $i=0;
-        foreach ($product_datas as $item){
+        $datas = [];
+        $i = 0;
+        foreach ($product_datas as $item) {
             $datas[$i]['id'] = $item->id;
             $datas[$i]['second_name'] = $item->name;
             $i++;
         }
-        return YZE_JSON_View::success($this,$datas);
+        return YZE_JSON_View::success($this, $datas);
+    }
+
+    public function post_order()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $user_oppid = $request->get_from_post('openid');
+        $wx_appid = $request->get_from_post('wx_appid');
+        $stand_id = $request->get_from_post('stand_id');
+        $price = $request->get_from_post('price');
+        $product_id = $request->get_from_post('product_id');
+        $filter = $request->get_from_post('filter');
+        $user_id = User_Model::find_by_openid($user_oppid);
+        $product_name = Product_Model::find_by_id($product_id)->name; //机型名称
+        $quote_standard_name = Quote_Standard_Model::find_by_id($stand_id)->name; //标准名称
+        $second_attr_arr = explode("_", $filter);
+        $second_attr_name_arr = [];
+        for ($i = 0; $i < count($second_attr_arr); $i++) {
+            $second_attr_name_arr[$i] = Second_Attribute_Model::find_by_id($second_attr_arr[$i])->name;
+        }
+        $second_attr_name_str = implode("→", $second_attr_name_arr);
+        $desc = $product_name . "：" . $second_attr_name_str . " " . $quote_standard_name;
+        $order_model = new Order_Model();
+        $order_model->set(Order_Model::F_UUID, uuid());
+        $order_model->set(Order_Model::F_STATUS, "unshipped"); //未发货
+        $order_model->set(Order_Model::F_DESC, $desc);
+        $order_model->set(Order_Model::F_WX_APPID, $wx_appid);
+        $order_model->set(Order_Model::F_USER_ID, $user_id->id);
+        $order_model->set(Order_Model::F_PRICE, $price);
+        $order_model->set(Order_Model::F_COUNT, "1");
+        $order_model->set(Order_Model::F_ORDER_TIME, date("Y-m-d h:i:s"),time()); //未发货
+        $order_model->save();
+        return YZE_JSON_View::success($this,$order_model->id);
+    }
+
+
+    //获取订单信息
+    public function post_order_info(){
+        
     }
 
     public function exception(YZE_RuntimeException $e)

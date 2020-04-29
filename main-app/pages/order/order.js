@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    order_id: "",
     countDay: null,
     countHour: null,
     countMinute: null,
@@ -19,7 +20,8 @@ Page({
    */
   onLoad: function(options) {
     var order_id = options.orderid;
-    wx.setStorageSync('order_id', order_id)
+    this.data.order_id = options.orderid;
+    // wx.setStorageSync('order_id', order_id)
     var that = this;
     wx.request({
       url: app.API + "getOrderById",
@@ -33,7 +35,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log("返回的订单", res.data);
         var price = res.data[0].price;
         that.setData({
           orderinfo: res.data,
@@ -47,7 +48,7 @@ Page({
     })
   },
   goProduct: function() {
-    var id = wx.getStorageSync('order_id')
+    var id = this.data.order_id;
     wx.request({
       url: app.API + "upOrderNum",
       data: {
