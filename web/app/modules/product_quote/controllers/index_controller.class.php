@@ -26,7 +26,8 @@ class Index_Controller extends YZE_Resource_Controller
     {
         $request = $this->request;
         //$this->layout = 'tpl name';
-        $product_id = $request->get_from_get("query");
+        $product_id = $request->get_from_get("product_id");
+        $first_product_id = $request->get_from_get("first_product_id");
         $product_quote_search = new Product_Quote_Search();
         $product_quote_search->page = $request->get_from_get("page", 1);
         $product_quote_search->pagesize = $request->get_from_get("limit", 10);
@@ -34,8 +35,11 @@ class Index_Controller extends YZE_Resource_Controller
             $product_quote_search->page = 1;
             $product_quote_search->product_id = trim($product_id);
         }
+        if ($first_product_id) {
+            $product_quote_search->page = 1;
+            $product_quote_search->first_product_id = trim($first_product_id);
+        }
         $product_quote_datas = $product_quote_search->build_sql(new YZE_SQL(), $totalcnt);
-
         $this->set_View_Data('product_quote_cnt', $totalcnt);
         $this->set_view_data('product_quote_datas', $product_quote_datas);
         $this->set_view_data('yze_page_title', '产品报价列表');

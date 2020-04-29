@@ -23,18 +23,18 @@ $product_quote_cnt = $this->get_data('product_quote_cnt');
 $datas = ["data" => [], "code" => 0, "count" => $product_quote_cnt];
 $i = 0;
 foreach ($product_quote_datas as $item) {
-    $attribute_arr = explode("_", $item->second_attribute_ids);
+    $attribute_arr = explode("_", $item['pq']->second_attribute_ids);
     $second_attribute_names_arr = array();
     for ($j = 0; $j < count($attribute_arr); $j++) {
         $second_attribute_names_arr[$j] = Second_Attribute_Model::find_by_id($attribute_arr[$j])->name;
     }
-    $quote_arr = explode(",", $item->quote_standard_ids);
-    $price_arr = explode(",", $item->price);
+    $quote_arr = explode(",", $item['pq']->quote_standard_ids);
+    $price_arr = explode(",",$item['pq']->price);
     $quote_standard_arr = array();
     for ($m = 0; $m < count($quote_arr); $m++) {
         $quote_standard_arr[$m] = Quote_Standard_Model::find_by_id($quote_arr[$m])->name . "：" . $price_arr[$m];
     }
-    $datas['data'][$i]['name'] = Product_Model::find_by_id($item->product_id)->name;
+    $datas['data'][$i]['name'] = Product_Model::find_by_id($item['pq']->product_id)->name;
     $datas['data'][$i]['second_attribute_names'] = implode("→", $second_attribute_names_arr);
     $datas['data'][$i]['quote_standard'] = implode("，", $quote_standard_arr);
     $datas['data'][$i]['id'] = $item->id;

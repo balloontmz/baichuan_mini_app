@@ -29,7 +29,7 @@ $get_first_product = First_Product_Model::find_all();
     <blockquote class="layui-elem-quote news_search mt-1">
         <form class="layui-form">
             <div class="layui-inline">
-                <select name="" class="layui-select first_product"
+                <select name="" id="first_product_id" class="layui-select first_product"
                         lay-filter="first_product" lay-search="">
                     <option value="">请选择</option>
                     <?php foreach ($get_first_product as $item) { ?>
@@ -38,7 +38,7 @@ $get_first_product = First_Product_Model::find_all();
                 </select>
             </div>
             <div class="layui-inline">
-                <select name="product_id" id="query" class="layui-select product"
+                <select name="product_id" id="product_id" class="layui-select product"
                         lay-filter="select-question" lay-search="">
                     <option value="">请选择</option>
                 </select>
@@ -67,8 +67,8 @@ $get_first_product = First_Product_Model::find_all();
            lay-filter="test">
         <thead>
         <tr>
-            <th lay-data="{field:'name'}">产品名称</th>
-            <th lay-data="{field:'second_attribute_names'}">属性</th>
+            <th lay-data="{field:'name',width:160}">产品名称</th>
+            <th lay-data="{field:'second_attribute_names',width:200}">属性</th>
             <th lay-data="{field:'quote_standard'}">报价 / ￥</th>
             <th lay-data="{fixed: 'right', align: 'center',width:120, toolbar: '#barDemo'}">操作</th>
         </tr>
@@ -148,7 +148,8 @@ $get_first_product = First_Product_Model::find_all();
     function reloadTable() {
         table.reload("test", {
             where: {
-                query: $("#query").val()
+                product_id: $("#product_id").val(),
+                first_product_id:  $("#first_product_id").val(),
             }
         });
     }
