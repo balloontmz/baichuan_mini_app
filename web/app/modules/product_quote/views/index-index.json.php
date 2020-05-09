@@ -37,7 +37,7 @@ foreach ($product_quote_datas as $item) {
     $datas['data'][$i]['name'] = Product_Model::find_by_id($item['pq']->product_id)->name;
     $datas['data'][$i]['second_attribute_names'] = implode("→", $second_attribute_names_arr);
     $datas['data'][$i]['quote_standard'] = implode("，", $quote_standard_arr);
-    $datas['data'][$i]['id'] = $item->id;
+    $datas['data'][$i]['id'] = $item['pq']->id;
     $i++;
 }
 header('Content-Type:application/json');

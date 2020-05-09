@@ -49,6 +49,16 @@ class Quote_Standard_Controller extends YZE_Resource_Controller {
         return YZE_JSON_View::success($this);
     }
 
+    public function post_remove()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $quote_id = $request->get_from_post("id");
+        $get_quote_standard = Quote_Standard_Model::find_by_id($quote_id);
+        $get_quote_standard->remove();
+        return YZE_JSON_View::success($this);
+    }
+
     public function exception(YZE_RuntimeException $e){
         $request = $this->request;
         $this->layout = 'error';

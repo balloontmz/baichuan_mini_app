@@ -50,7 +50,7 @@ $data = $this->get_data('arg_name');
             if (obj.event === 'del') {
                 layer.confirm("确定要该分类吗？", function (index) {
                     $.ajax({
-                        url: "/attribute/first_attribute/remove",
+                        url: "/attribute/quote_standard/remove",
                         method: "post",
                         data: {
                             id: id

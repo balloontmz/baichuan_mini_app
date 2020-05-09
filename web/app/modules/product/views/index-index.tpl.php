@@ -46,7 +46,7 @@ $data = $this->get_data('arg_name');
 </div>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog"
-       data-url="/product/first_product/add?first_product_id={{d.id}}" lay-event="edit">修改</a>
+       data-url="/product/index/add?product_id={{d.id}}" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs " lay-event="del">删除</a>
 </script>
 <script>

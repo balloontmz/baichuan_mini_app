@@ -56,9 +56,9 @@ class Product_Quote_Search extends Base_Search
             $list = YZE_DBAImpl::getDBA()->select($sql);
 
             $sql->clean_groupby()->clean_select()->clean_limit();
-            $sql->count("pq", First_Product_Model::F_ID, "total", true);
+            $sql->count("pq", Product_Price_Model::F_ID, "total", true);
             $obj = YZE_DBAImpl::getDBA()->getSingle($sql);
-            $totalCount = $obj ? $obj->total : 0;
+            $totalCount = $obj ? $obj["pq"]->total : 0;
         } catch (Exception $e) {
             throw new YZE_FatalException($e->getMessage());
         }

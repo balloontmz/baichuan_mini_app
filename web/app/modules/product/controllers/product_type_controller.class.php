@@ -41,7 +41,7 @@ class Product_Type_Controller extends YZE_Resource_Controller
         $this->layout = '';
         $name = $request->get_from_post("name");
         $product_type_id = trim($request->get_from_post("product_type_id"));
-        if ($product_type_id != -1) {
+        if ($product_type_id) {
             Product_Type_Model::update_by_id(trim($product_type_id), ["name" => $name]);
         } else {
             $product_type_model = new Product_Type_Model();

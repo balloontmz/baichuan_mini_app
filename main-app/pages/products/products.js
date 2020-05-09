@@ -5,13 +5,13 @@ Page({
     uuid: 7,
     cateList: [{
       classname: "手机",
-      id: 11
+      id: 1
     }, {
       classname: "平板",
-      id: 12
+      id: 2
     }, {
       classname: "笔记本",
-      id: 13
+      id: 3
     }],
     brandList: [{
       productList: []
@@ -32,7 +32,7 @@ Page({
       url: app.NEW_API + "/api/first_product.json",
       method: "post",
       data: {
-        type_id: 11
+        type_id: 1
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
