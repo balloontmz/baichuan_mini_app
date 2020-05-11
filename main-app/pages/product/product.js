@@ -58,7 +58,7 @@ Page({
     })
   },
 
-  chooseSx: function(e) {
+  chooseSx: function (e) {
     let FiledArr = [];
     // 暂存指针
     let that = this;
@@ -76,6 +76,7 @@ Page({
       boxindex,
       detailindex
     } = e.currentTarget.dataset
+    console.log(attrid);
     f[attrid] = id
 
     // 赋值字段名称
@@ -101,9 +102,11 @@ Page({
     searchModel.forEach(el => {
       searchModelArr.push(el)
     })
+    console.log("aaa", f)
     // 发送请求
     if (searchModelArr.length == attributeList.length) {
       var tempArr = [];
+      console.log("aa", f);
       for (var key in f) {
         tempArr.push(f[key])
       }

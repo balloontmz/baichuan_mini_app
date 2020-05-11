@@ -96,10 +96,11 @@ class Index_Controller extends YZE_Resource_Controller
             for ($i = 0; $i < count($second_arr_name); $i++) {
                 $second_arr_name_a[$i] = array_unique(explode(",", $second_arr_name[$i]['second_name'])); //转化为数组后再去重
                 $second_arr_id_a[$i] = array_unique(explode(",", $second_arr_name[$i]['id']));  //去重
+
                 for ($j = 0; $j < count($second_arr_name_a[$i]); $j++) {
                     if ($second_arr_name_a[$i][$j] != "" && $second_arr_id_a[$i][$j] != "") {//去掉空的
-                        $second_name_obj_arr[$i][$j]['attr_value'] = $second_arr_name_a[$i][$j];
-                        $second_name_obj_arr[$i][$j]['id'] = $second_arr_id_a[$i][$j];
+                        $second_name_obj_arr[$i][$j]['attr_value'] = trim($second_arr_name_a[$i][$j]);
+                        $second_name_obj_arr[$i][$j]['id'] = intval($second_arr_id_a[$i][$j]);
                         $second_name_obj_arr[$i][$j]['attr_id'] = Second_Attribute_Model::find_by_id($second_arr_id_a[$i][$j])->first_attribute_id;
                     }
                 }

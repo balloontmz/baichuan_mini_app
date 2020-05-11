@@ -70,13 +70,13 @@ $get_first_product = First_Product_Model::find_all();
             <th lay-data="{field:'name',width:160}">产品名称</th>
             <th lay-data="{field:'second_attribute_names',width:200}">属性</th>
             <th lay-data="{field:'quote_standard'}">报价 / ￥</th>
-            <th lay-data="{fixed: 'right', align: 'center',width:120, toolbar: '#barDemo'}">操作</th>
+            <th lay-data="{fixed: 'right', align: 'center',width:180, toolbar: '#barDemo'}">操作</th>
         </tr>
         </thead>
     </table>
 </div>
 <script type="text/html" id="barDemo">
-<!--    <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog" data-url="/product_quote/index/add?id={{d.id}}" lay-event="edit">修改</a>-->
+    <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog" data-url="/product_quote/index/edit_attr?id={{d.id}}" lay-event="edit">属性</a>
     <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog"
        data-url="/product_quote/index/edit_quote?id={{d.id}}" lay-event="edit">报价</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs " lay-event="del">删除</a>

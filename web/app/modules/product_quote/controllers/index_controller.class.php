@@ -212,6 +212,38 @@ class Index_Controller extends YZE_Resource_Controller
         return YZE_JSON_View::success($this);
     }
 
+    //获取报价标准描述
+    public function edit_attr()
+    {
+        $request = $this->request;
+        $this->layout = 'empty';
+        $product_price_id = $request->get_from_get('id');
+        $datas = Product_Price_Model::find_by_id($product_price_id);
+        $attribute_ids = explode("_", $datas->second_attribute_ids);
+        $this->set_View_Data('product_price_id', $product_price_id);
+        $this->set_View_Data('attribute_ids', $attribute_ids);
+        $this->set_view_data('yze_page_title', '修改属性');
+    }
+
+    //只修改报价
+    public function post_edit_attr()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $datas = $request->the_post_datas();
+        $second_attribute_ids = array();
+        for ($i = 0; $i < count($datas['second_attribute_id']); $i++) {
+            if (!$datas['second_attribute_id'][$i]) continue;
+            $second_attribute_ids[$i] = $datas['second_attribute_id'][$i];
+        }
+        $seve_arr = [
+            "second_attribute_ids" => implode("_", $second_attribute_ids),
+        ];
+        Product_Price_Model::update_by_id($datas['product_price_id'], $seve_arr);
+        return YZE_JSON_View::success($this);
+
+    }
+
 
     public function exception(YZE_RuntimeException $e)
     {
