@@ -12,7 +12,8 @@ Page({
     countMinute: null,
     countSecond: null,
     counts: 1,
-    price_total:''
+    price_total: 0,
+    order_id: ''
   },
 
   /**
@@ -24,23 +25,21 @@ Page({
     // wx.setStorageSync('order_id', order_id)
     var that = this;
     wx.request({
-      url: app.API + "getOrderById",
+      url: app.NEW_API + "/api/order_info",
       data: {
-        id: order_id,
+        order_id: order_id,
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
-        var price = res.data[0].price;
+      method: 'post',
+      success: function(res) {
+        that.data.order_id = res.data.data.id
         that.setData({
-          orderinfo: res.data,
-          price_total:res.data[0].price
+          orderinfo: res.data.data,
+          price_total: res.data.data.price,
+          counts: res.data.data.goods_count,
         })
-        wx.setStorageSync('price', price)
       }
     })
     that.setData({
@@ -48,21 +47,18 @@ Page({
     })
   },
   goProduct: function() {
-    var id = this.data.order_id;
     wx.request({
-      url: app.API + "upOrderNum",
+      url: app.NEW_API + "/api/up_order",
       data: {
-        id: id,
-        num: this.data.counts,
+        id: this.data.order_id,
+        counts: this.data.counts,
         price: this.data.price_total
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
+      method: 'post',
+      success: function(res) {
         wx.switchTab({
           url: '../products/products',
         })
@@ -70,13 +66,11 @@ Page({
     })
   },
   goDeliver: function() {
-    var id = wx.getStorageSync('order_id');
-    var oid = this.data.orderid;
     wx.request({
-      url: app.API + "upOrderNum",
+      url: app.NEW_API + "/api/up_order",
       data: {
-        id: id,
-        num: this.data.counts,
+        order_id: this.data.order_id,
+        counts: this.data.counts,
         price: this.data.price_total
       },
       header: {
@@ -84,22 +78,20 @@ Page({
       },
       method: 'GET',
       dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
+      success: function(res) {
         wx.navigateTo({
-          url: '../deliver/deliver?oid=' + oid,
+          url: '../deliver/deliver?oid=' + this.data.order_id,
         })
       }
     })
-   
+
   },
   goIndex: function() {
-    var id = wx.getStorageSync('order_id')
     wx.request({
-      url: app.API + "upOrderNum",
+      url: app.NEW_API + "/api/up_order",
       data: {
-        id: id,
-        num: this.data.counts,
+        order_id: this.data.order_id,
+        counts: this.data.counts,
         price: this.data.price_total
       },
       header: {
@@ -107,34 +99,33 @@ Page({
       },
       method: 'GET',
       dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
+      success: function(res) {
         wx.switchTab({
           url: '../welcome/welcome',
         })
       }
     })
   },
-  del:function(){
+  del: function() {
     wx.switchTab({
       url: '../welcome/welcome',
     })
   },
-  addgoodscount:function(){
-    var that =this;
-    var add = this.data.counts;
-      ++add;
-    var total_p = wx.getStorageSync('price')*add;
-    that.setData({
-      counts: add,
-      price_total:total_p
-    })
-  },
-  reducegoodscount: function(){
+  addgoodscount: function() {
     var that = this;
     var add = this.data.counts;
-      --add;
-    var total_p = wx.getStorageSync('price') * add;
+    ++add;
+    var total_p = this.data.price_total * add;
+    that.setData({
+      counts: add,
+      price_total: total_p
+    })
+  },
+  reducegoodscount: function() {
+    var that = this;
+    var add = this.data.counts;
+    --add;
+    var total_p = this.data.price_total * add;
     that.setData({
       counts: add,
       price_total: total_p

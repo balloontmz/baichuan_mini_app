@@ -208,11 +208,43 @@ class Index_Controller extends YZE_Resource_Controller
         return YZE_JSON_View::success($this,$order_model->id);
     }
 
-
-    //获取订单信息
+    //获取订单信息，改变订单状态
     public function post_order_info(){
-        
+        $request = $this->request;
+        $this->layout = '';
+        $order_id = $request->get_from_post('order_id');
+        $order_info = Order_Model::from()->where("id=:order_id")->getSingle([":order_id"=>$order_id]);
+        $datas = [
+            "id"=>$order_info->id,
+            "desc"=>$order_info->desc,
+            "goods_count"=>$order_info->count,
+            "order_time"=>trim($order_info->order_time),
+            "price"=>$order_info->price,
+        ];
+        return YZE_JSON_View::success($this,$datas);
     }
+
+    //修改订单数量
+    public function post_up_order(){
+        $request = $this->request;
+        $this->layout = '';
+        $order_id = $request->get_from_post('order_id');
+        $counts = $request->get_from_post("counts");
+        $price = $request->get_from_post("price");
+        Order_Model::update_by_id($order_id,["count"=>$counts,"price"=>$price]);
+        return YZE_JSON_View::success($this);
+    }
+
+    //修改订单数量
+    public function post_my_order(){
+        $request = $this->request;
+        $this->layout = '';
+        $order_id = $request->get_from_post('openid');
+        $counts = $request->get_from_post("status");
+
+        return YZE_JSON_View::success($this);
+    }
+
 
     public function exception(YZE_RuntimeException $e)
     {

@@ -1,5 +1,5 @@
 <!--pages/order/order.wxml-->
-<view class="main-box" wx:for="{{orderinfo}}" wx:key>
+<view class="main-box">
   <view class="header">
     <text class="daifahuo">待发货</text>
     <text class="des">为了售出高价，请您尽快发货哦！</text>
@@ -21,9 +21,9 @@
     <view class="now" bindtap="goDeliver">立即发货</view>
   </view>
   <view class="phone-attr">
-    <view class="phone_name">{{item.second_name}}{{item.param}}</view>
+    <view class="phone_name">{{orderinfo.desc}}</view>
     <view class="phone-add">
-      <view class="phone-price">￥{{item.price}}</view>
+      <view class="phone-price">￥{{orderinfo.price}}</view>
       <view class="addPhone">
         <view class="icon" bindtap="reducegoodscount">-</view>
         <view class="count">{{counts}}</view>
