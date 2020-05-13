@@ -7,6 +7,7 @@
 
 namespace app\vendor\helper;
 
+use app\order\Order_Model;
 use app\product\First_Product_Model;
 use app\product\Product_Model;
 use mysql_xdevapi\Exception;
@@ -16,7 +17,7 @@ use yangzie\YZE_FatalException;
 use yangzie\YZE_SQL;
 use yangzie\YZE_Where;
 
-class First_Product_Search extends Base_Search
+class Order_Search extends Base_Search
 {
 
 
@@ -33,22 +34,22 @@ class First_Product_Search extends Base_Search
     public $pagesize;
 
     /**
-     * 一级产品名称
+     * 状态
      * @var string
      */
-    public $first_product_name;
+    public $status;
 
     public function build_sql(YZE_SQL $sql, &$totalCount = 0)
     {
         try {
-            $sql->from(First_Product_Model::CLASS_NAME, "fp");
-            if ($this->first_product_name)
-                $sql->where("fp", First_Product_Model::F_NAME, YZE_SQL::EQ, $this->first_product_name);
+            $sql->from(Order_Model::CLASS_NAME, "o");
+            if ($this->status)
+                $sql->where("o", Order_Model::F_STATUS, YZE_SQL::EQ, $this->status);
             $sql->limit(($this->page - 1) * $this->pagesize, $this->pagesize);
             $activity_list = YZE_DBAImpl::getDBA()->select($sql);
 
             $sql->clean_groupby()->clean_select()->clean_limit();
-            $sql->count("fp", First_Product_Model::F_ID, "total", true);
+            $sql->count("o", Order_Model::F_ID, "total", true);
             $obj = YZE_DBAImpl::getDBA()->getSingle($sql);
             $totalCount = $obj ? $obj->total : 0;
         } catch (Exception $e) {

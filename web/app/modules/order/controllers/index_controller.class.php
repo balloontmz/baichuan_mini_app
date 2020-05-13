@@ -1,11 +1,13 @@
 <?php
 namespace app\order;
+use app\vendor\helper\Order_Search;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
 use \yangzie\YZE_Session_Context;
 use \yangzie\YZE_RuntimeException;
 use \yangzie\YZE_JSON_View;
+use yangzie\YZE_SQL;
 
 /**
 *
@@ -16,7 +18,18 @@ class Index_Controller extends YZE_Resource_Controller {
     public function index(){
         $request = $this->request;
         //$this->layout = 'tpl name';
-        $this->set_view_data('yze_page_title', 'this is controller index');
+        $order_search = new Order_Search();
+        $status = $request->get_from_get('status');
+        $order_search->page = $request->get_from_get("page",1);
+        $order_search->pagesize =  $request->get_from_get("limit",10);
+        if($status){
+            $order_search->page = 1;
+            $order_search->status=$status;
+        }
+        $order_datas = $order_search->build_sql(new YZE_SQL(),$totalcnt);
+        $this->set_view_data('order_datas_cnt', $totalcnt);
+        $this->set_view_data('order_datas', $order_datas);
+        $this->set_view_data('yze_page_title', '订单列表');
     }
 
     public function exception(YZE_RuntimeException $e){
