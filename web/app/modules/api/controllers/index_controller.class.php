@@ -203,45 +203,100 @@ class Index_Controller extends YZE_Resource_Controller
         $order_model->set(Order_Model::F_USER_ID, $user_id->id);
         $order_model->set(Order_Model::F_PRICE, $price);
         $order_model->set(Order_Model::F_COUNT, "1");
-        $order_model->set(Order_Model::F_ORDER_TIME, date("Y-m-d h:i:s"),time()); //未发货
+        $order_model->set(Order_Model::F_ORDER_TIME, date("Y-m-d h:i:s"), time()); //未发货
         $order_model->save();
-        return YZE_JSON_View::success($this,$order_model->id);
+        return YZE_JSON_View::success($this, $order_model->id);
     }
 
     //获取订单信息，改变订单状态
-    public function post_order_info(){
+    public function post_order_info()
+    {
         $request = $this->request;
         $this->layout = '';
         $order_id = $request->get_from_post('order_id');
-        $order_info = Order_Model::from()->where("id=:order_id")->getSingle([":order_id"=>$order_id]);
+        $order_info = Order_Model::from()->where("id=:order_id")->getSingle([":order_id" => $order_id]);
         $datas = [
-            "id"=>$order_info->id,
-            "desc"=>$order_info->desc,
-            "goods_count"=>$order_info->count,
-            "order_time"=>trim($order_info->order_time),
-            "price"=>$order_info->price,
+            "id" => $order_info->id,
+            "desc" => $order_info->desc,
+            "goods_count" => $order_info->count,
+            "order_time" => trim($order_info->order_time),
+            "price" => $order_info->price,
         ];
-        return YZE_JSON_View::success($this,$datas);
+        return YZE_JSON_View::success($this, $datas);
     }
 
     //修改订单数量
-    public function post_up_order(){
+    public function post_up_order()
+    {
         $request = $this->request;
         $this->layout = '';
         $order_id = $request->get_from_post('order_id');
         $counts = $request->get_from_post("counts");
         $price = $request->get_from_post("price");
-        Order_Model::update_by_id($order_id,["count"=>$counts,"price"=>$price]);
+        Order_Model::update_by_id($order_id, ["count" => $counts, "price" => $price]);
         return YZE_JSON_View::success($this);
     }
 
-    //修改订单数量
-    public function post_my_order(){
+    //获取我的订单
+    public function post_my_order()
+    {
         $request = $this->request;
         $this->layout = '';
-        $order_id = $request->get_from_post('openid');
-        $counts = $request->get_from_post("status");
+        $openid = $request->get_from_post('openid');
+        $wx_appid = $request->get_from_post('wx_appid');
+        $status = $request->get_from_post("status");
+        if($status){
+            $order = Order_Model::get_by_openid($openid, $wx_appid, $status);
+            $datas = [];
+            $i = 0;
+            foreach ($order as $item) {
+                $datas[$i]['id'] = $item->id;
+                $datas[$i]['orderTime'] = $item->order_time;
+                $datas[$i]['price'] = $item->price;
+                $datas[$i]['param'] = trim($item->desc);
+                $i++;
+            }
+        }else{
+            $order = Order_Model::get_all($openid, $wx_appid);
+            $datas = [];
+            $i = 0;
+            foreach ($order as $item) {
+                $datas[$i]['id'] = $item->id;
+                $datas[$i]['orderTime'] = $item->order_time;
+                $datas[$i]['price'] = $item->price;
+                $datas[$i]['param'] = trim($item->desc);
+                $i++;
+            }
+        }
+        return YZE_JSON_View::success($this, $datas);
+    }
 
+    //获取我的订单
+    public function post_cancel_order()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $order_id = $request->get_from_post('order_id');
+        $order_model = Order_Model::find_by_id($order_id);
+        $order_model->remove();
+        return YZE_JSON_View::success($this);
+    }
+
+
+    //发货
+    public function up_order_status()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $order_id = $request->get_from_get('id');
+        $save_data = [
+            "status"=>$request->get_from_get("status"),
+            "consignor"=>$request->get_from_get("consignor"),
+            "address"=>$request->get_from_get("address"),
+            "express_company"=>$request->get_from_get("express_company"),
+            "express_num"=>$request->get_from_get("express_num")
+        ];
+        Order_Model::update_by_id($order_id,$save_data);
         return YZE_JSON_View::success($this);
     }
 

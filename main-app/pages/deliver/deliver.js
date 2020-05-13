@@ -7,7 +7,11 @@ Page({
    */
   data: {
     name: '佰川回收 181-9857-5678',
-    address: '贵州省贵阳市南明区和丰大厦商城-1楼1号佰川回收'
+    address: '贵州省贵阳市南明区和丰大厦商城-1楼1号佰川回收',
+    orderlistnum:'',
+    exprss_company:'',
+    consignor:'',
+    consignor_address:''
   },
 
   /**
@@ -15,31 +19,33 @@ Page({
    */
   onLoad: function(options) {
     var oid = options.oid;
-    console.log("deliver", oid);
     var that = this;
     that.setData({
       ordid: oid
     })
   },
+  exprssCompany:function(e){
+    this.data.exprss_company = e.detail.value
+  },
   orderlistnuminput: function(e) {
-    this.setData({
-      orderlistnum: e.detail.value
-    })
+    this.data.orderlistnum = e.detail.value
   },
   sumbit:function(){
     var ooid = this.data.ordid;
     wx.request({
-      url: app.API + "upOrderStatus",
+      url: app.NEW_API + "/api/up_order_status",
       data: {
         id: ooid,
-        status: 1,
-        express_num: this.data.orderlistnum
+        status: 'shipped',
+        express_num: this.data.orderlistnum,
+        express_company:this.data.exprss_company,
+        consignor:this.data.consignor,
+        address: this.data.consignor_address
       },
-      method: 'GET',
+      method: 'get',
       dataType: 'json',
-      responseType: 'text',
       success: function (res) {
-        if (res.data.code == 1) {
+        if (res.data.success) {
           wx.switchTab({
             url: '../person/index',
           })
@@ -56,8 +62,9 @@ Page({
     var that = this;
     wx.chooseAddress({
       success: function(res) {
-        console.log(res)
         var usemessage = res;
+        that.data.consignor = usemessage.userName + " " + usemessage.telNumber;
+        that.data.consignor_address = usemessage.provinceName + usemessage.cityName + usemessage.countyName + usemessage.detailInfo;
         that.setData({
           addressList: usemessage
         })

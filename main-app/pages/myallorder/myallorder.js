@@ -15,24 +15,23 @@ Page({
   onLoad: function (options) {
     var that = this;
     var status = 1;  //为了不让取消按钮显示
-    var openid = wx.getStorageSync('user_id');
-    console.log("全部订单", openid);
+    var openid = wx.getStorageSync('openid');
+    var wx_appid = wx.getStorageSync('wx_appid');
     wx.request({
-      url: app.API + "getUserAllOrderList",
+      url: app.NEW_API + "/api/my_order",
       data: {
         openid: openid,
+        wx_appid: wx_appid,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
+      method: 'post',
       dataType: 'json',
-      responseType: 'text',
       success: function (res) {
-        console.log("返回的订单", res.data);
         that.setData({
-          orderList: res.data,
-          status: status
+          orderList: res.data.data,
+          cencel_btn: options.status
         })
       }
     })

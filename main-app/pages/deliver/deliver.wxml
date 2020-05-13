@@ -17,7 +17,7 @@
     (这是用于您的退货地址)
     <view class="address-box" bindtap="getAddress">
       <view class="nei-box">
-        <view class="title"> 收货人：</view>
+        <view class="title"> 发货人：</view>
         <view class="content">{{addressList.userName}} {{addressList.telNumber}}</view>
       </view>
       <view class="nei-box">
@@ -32,7 +32,7 @@
         <view class="weui-label">物流公司</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" type='text' name="username" bindinput='userPhone_no' placeholder="请输入物流公司名称" />
+        <input class="weui-input" type='text' name="exprss_company" bindinput='exprssCompany' placeholder="请输入物流公司名称" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">

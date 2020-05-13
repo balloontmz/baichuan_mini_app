@@ -73,6 +73,24 @@ class Api_Module extends YZE_Base_Module
                         "action" => "up_order"
                     ),
                 ),
+                'api/my_order' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "my_order"
+                    ),
+                ),
+                'api/cancel_order' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "cancel_order"
+                    ),
+                ),
+                'api/up_order_status' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "up_order_status"
+                    ),
+                ),
             )
         );
     }

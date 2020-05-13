@@ -9,38 +9,38 @@ Page({
   data: {
     routers: [{
         name: '待发货',
-        url: '../my-orderlist/my-orderlist?status=0',
+        url: '../my-orderlist/my-orderlist?status=unshipped',
         icon: '../../img/person/dai.png',
         id: "001"
       }, {
         name: '已发货',
-        url: '../my-orderlist/my-orderlist?status=1',
+        url: '../my-orderlist/my-orderlist?status=shipped',
         icon: '../../img/person/yifa.png',
         id: "002"
       }, {
-        name: '待完成',
-        url: '../my-orderlist/my-orderlist?status=2',
+        name: '待验机',
+        url: '../my-orderlist/my-orderlist?status=looking',
         icon: '../../img/person/dwc.png',
         id: "003"
       },
       {
         name: '待收款',
-        url: '../my-orderlist/my-orderlist?status=3',
+        url: '../my-orderlist/my-orderlist?status=collect',
         icon: '../../img/person/dsk.png',
         id: "003"
       }, {
         name: '已完成',
-        url: '../my-orderlist/my-orderlist?status=4',
+        url: '../my-orderlist/my-orderlist?status=finish',
         icon: '../../img/person/wan.png',
         id: "003"
       }, {
         name: '待退回',
-        url: '../my-orderlist/my-orderlist?status=5',
+        url: '../my-orderlist/my-orderlist?status=reback',
         icon: '../../img/person/dth.png',
         id: "004"
       }, {
         name: '已退回',
-        url: '../my-orderlist/my-orderlist?status=6',
+        url: '../my-orderlist/my-orderlist?status=returned',
         icon: '../../img/person/yth.png',
         id: "006"
       }, {

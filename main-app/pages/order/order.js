@@ -76,7 +76,7 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
+      method: 'post',
       dataType: 'json',
       success: function(res) {
         wx.navigateTo({
@@ -97,7 +97,7 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
+      method: 'post',
       dataType: 'json',
       success: function(res) {
         wx.switchTab({

@@ -14,23 +14,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var openid = wx.getStorageSync('user_id');
+    var openid = wx.getStorageSync('openid');
+    var wx_appid = wx.getStorageSync('wx_appid');
     wx.request({
-      url: app.API + "getUserOrderList",
+      url: app.NEW_API + "/api/my_order",
       data: {
         openid: openid,
+        wx_appid: wx_appid,
         status:options.status
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
+      method: 'post',
       dataType: 'json',
-      responseType: 'text',
       success: function (res) {
-        console.log("返回的订单", res.data);
         that.setData({
-          orderList: res.data,
+          orderList: res.data.data,
           cencel_btn:options.status
         })
       }
@@ -40,16 +40,15 @@ Page({
     var that=this;
     var id = e.currentTarget.dataset.orderid;
     wx.request({
-      url: app.API + "delOrder",
+      url: app.NEW_API + "/api/cancel_order",
       data: {
-        id
+        order_id: id
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
+      method: 'post',
       dataType: 'json',
-      responseType: 'text',
       success: function (res) {
         var newList = that.data.orderList;
         wx.showToast({
@@ -71,7 +70,6 @@ Page({
   },
 
   toDeliver:function(e){
-    console.log("===>", e.currentTarget.dataset.oid)
     wx.navigateTo({
       url: '../deliver/deliver?oid=' + e.currentTarget.dataset.oid,
     })
