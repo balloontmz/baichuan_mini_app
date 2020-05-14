@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/order/views/index-index.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/order/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/order/controllers/index_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/order/models/order_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/order/models/order_model.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/order/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/order/views/index-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/helper/order_search.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/helper/order_search.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/common/hooks/sign_auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/common/hooks/sign_auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/controllers/store_user_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/controllers/store_user_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/models/store_user_model.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_user-add.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_user-add.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_user-index.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_user-index.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_user-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_user-index.tpl.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +158,8 @@
       <workItem from="1589037330629" duration="4063000" />
       <workItem from="1589205349118" duration="4154000" />
       <workItem from="1589299173116" duration="4376000" />
-      <workItem from="1589379681841" duration="8901000" />
+      <workItem from="1589379681841" duration="8996000" />
+      <workItem from="1589468489501" duration="2683000" />
     </task>
     <servers />
   </component>

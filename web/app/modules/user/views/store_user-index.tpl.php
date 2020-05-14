@@ -38,6 +38,8 @@ $data = $this->get_data('arg_name');
             <th lay-data="{field:'store_phone'}">联系方式</th>
             <th lay-data="{field:'store_address' }">店铺地址</th>
             <th lay-data="{field:'type'}">店铺类型</th>
+            <th lay-data="{field:'wx_appid'}">AppID</th>
+            <th lay-data="{field:'app_secret'}">AppSecret</th>
             <th lay-data="{field:'wx_user_count' }">微信用户数量</th>
             <th lay-data="{fixed: 'right', align: 'center',width:120, toolbar: '#barDemo'}">操作</th>
         </tr>

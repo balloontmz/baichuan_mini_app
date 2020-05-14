@@ -21,6 +21,8 @@ for ($i = 0; $i < count($store_user_datas); $i++) {
     $datas['data'][$i]['store_address'] = $store_user_datas[$i]->store_address;
     $datas['data'][$i]['type'] = $store_user_datas[$i]->type == 'admin' ? '总店' : '分店';
     $datas['data'][$i]['wx_user_count'] = User_Model::get_user_count(trim($store_user_datas[$i]->wx_appid));
+    $datas['data'][$i]['wx_appid'] = $store_user_datas[$i]->wx_appid;
+    $datas['data'][$i]['app_secret'] = $store_user_datas[$i]->app_secret;
     $datas['data'][$i]['id'] = $store_user_datas[$i]->id;
 }
 header('Content-Type:application/json');

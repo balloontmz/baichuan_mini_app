@@ -45,6 +45,13 @@ $store_user_obj = $this->get_data('store_user_obj');
                 <div class="layui-input-inline">
                     <input type="text" id="wx_appid" value="<?= $store_user_obj->wx_appid ?>"
                            lay-verify="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">AppSecret：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="app_secret" value="<?= $store_user_obj->app_secret ?>"
+                           lay-verify="" autocomplete="off" class="layui-input">
                     <input type="hidden" id="store_user_id" value="<?= $store_user_obj->id ?>">
                 </div>
             </div>
@@ -68,7 +75,8 @@ $store_user_obj = $this->get_data('store_user_obj');
                     store_name: $("#store_name").val(),
                     store_phone: $("#store_phone").val(),
                     store_address: $("#store_address").val(),
-                    wx_appid: $("#wx_appid").val()
+                    wx_appid: $("#wx_appid").val(),
+                    app_secret:$("#app_secret").val()
                 },
                 success: function (res) {
                     if (res.success) {

@@ -57,16 +57,19 @@ class Store_User_Controller extends YZE_Resource_Controller
         $store_phone = $request->get_from_post('store_phone');
         $store_address = $request->get_from_post('store_address');
         $wx_appid = $request->get_from_post('wx_appid');
+        $app_secret = $request->get_from_post('app_secret');
         if (!$store_name) throw new YZE_FatalException("请输入店铺名称！");
         if (!$store_phone) throw new YZE_FatalException("请输入店铺联系方式！");
         if (!$store_address) throw new YZE_FatalException("请输入店铺地址！");
         if (!$wx_appid) throw new YZE_FatalException("请输入店铺AppId！");
+        if (!$app_secret) throw new YZE_FatalException("请输入店铺app_secret！");
         if ($store_user_id) {
             $update_datas = [
                 "store_name" => $store_name,
                 "store_phone" => $store_phone,
                 "store_address" => $store_address,
                 "wx_appid" => $wx_appid,
+                "app_secret"=>$app_secret
             ];
             Store_User_Model::update_by_id(trim($store_user_id), $update_datas);
         } else {
@@ -76,6 +79,7 @@ class Store_User_Controller extends YZE_Resource_Controller
             $store_user_model->set(Store_User_Model::F_STORE_PHONE, $store_phone);
             $store_user_model->set(Store_User_Model::F_STORE_ADDRESS, $store_address);
             $store_user_model->set(Store_User_Model::F_WX_APPID, $wx_appid);
+            $store_user_model->set(Store_User_Model::F_APP_SECRET, $app_secret);
             $store_user_model->set(Store_User_Model::F_TYPE, 'normal');
             $store_user_model->set(Store_User_Model::F_PASSWORD, base64_encode("123456"));
             $store_user_model->save();

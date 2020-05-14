@@ -60,9 +60,8 @@ YZE_Hook::add_hook(YD_ASSET_WX_USER_LOGIN, function () {
     $avatar = $request->get_from_post('avatar');
     $wx_appid = $request->get_from_post('wx_appid');
     $cellphone = $request->get_from_post('cellphone');
-    $appid = "wx7717d96c45ce7e7d";
-    $secret = "b301198bf067b35205863b3f39fd8440";
-    $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$appid}&secret={$secret}&js_code={$code}&grant_type=authorization_code";
+    $secret = Store_User_Model::get_by_wx_appid($wx_appid);
+    $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$wx_appid}&secret={$secret->app_secret}&js_code={$code}&grant_type=authorization_code";
     $http = new \YDHttp();
     $res = json_decode($http->get($url), true);
     if (!$res || !$res ["openid"]) return null;
