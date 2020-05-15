@@ -154,7 +154,7 @@ Page({
       wx.switchTab({
         url: "../person/index",
       })
-    } else if (!cellphone) {
+    } else if (cellphone==null) {
       wx.showModal({
         title: '提示',
         content: '为了给您提供更好的服务，请先前往个人中心绑定手机号哦！',

@@ -67,12 +67,8 @@ YZE_Hook::add_hook(YD_ASSET_WX_USER_LOGIN, function () {
     if (!$res || !$res ["openid"]) return null;
     $data["openid"] = $res ["openid"];
     $data["session_key"] = $res["session_key"];
-
-
     // 2. 用户查询
     $user = User_Model::find_by_openid($data["openid"]);
-//    var_dump($user);
-    $user_id = $user->id;
     if (!$user) {       //新用户
         $user = new User_Model();
         $user->set(User_Model::F_UUID, uuid());
@@ -81,28 +77,27 @@ YZE_Hook::add_hook(YD_ASSET_WX_USER_LOGIN, function () {
         $user->set(User_Model::F_WX_APPID, $wx_appid);
         $user->set(User_Model::F_OPENID, $data["openid"])->save();
     } else {      //已经注册过的用户
-        $save_data = [];
         if ($name) {
+            $save_data = [];
             $save_data['name'] = $name;
-        }
-        if ($gender) {
             $save_data['gender'] = $gender;
-        }
-        if ($avatar) {
             $save_data['wx_avatar'] = $avatar;
+            $save_data['login_date'] = date('Y-m-d H:i:s', time());
+            User_Model::update_by_id($user->id, $save_data);
+            $data["avatarUrl"] = $avatar;
+            $data["gender"] = $gender;
+            $data["nickName"] = $name;
+            $data["cellphone"] = $user->cellphone;
+            $data["status"] = $user->status;
+        } else {
+            $data["avatarUrl"] = $user->wx_avatar;
+            $data["gender"] = $user->gender;
+            $data["nickName"] = $user->name;
+            $data["cellphone"] = $user->cellphone;
+            $data["status"] = $user->status;
         }
-        $save_data['login_date'] = date('Y-m-d H:i:s', time());
-
-        User_Model::update_by_id($user_id, $save_data);
     }
 
-
-    $data["openid"] = $user->openid;
-    $data["avatarUrl"] = $user->wx_avatar;
-    $data["gender"] = $user->gender;
-    $data["nickName"] = $user->name;
-    $data["cellphone"] = $user->cellphone;
-    $data["status"] = $user->status;
 
     return array("userInfo" => $data);
 });

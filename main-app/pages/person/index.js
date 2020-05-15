@@ -92,6 +92,7 @@ Page({
               wx.setStorageSync("nickName", userInfo.nickName);
               app.globalData.wx_user_info.avatar = userInfo.avatarUrl;
               app.globalData.wx_user_info.gender = userInfo.gender;
+              app.globalData.wx_user_info.wx_appid = wx.getStorageSync('wx_appid');
               app.getWXUserInfo(page_id); //存信息
               that.setData({
                 wx_user_info: res.userInfo

@@ -2,7 +2,7 @@
 App({
   // API: "http://127.0.0.1:8090/",
   // API: "https://www.bckj.store/",
-  NEW_API:"http://baichuan.localhost",
+  NEW_API:"https://www.bckj.store",
   globalData: {
     jump_tyep: null,
     wx_user_info: {
