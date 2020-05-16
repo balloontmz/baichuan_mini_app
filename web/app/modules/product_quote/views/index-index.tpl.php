@@ -59,6 +59,9 @@ $get_first_product = First_Product_Model::find_all();
             <button class="layui-btn layui-btn-warm" type="button" id="super_edit"><i
                         class="layui-icon layui-icon-release" style="font-size: 15px; color: white;"></i>一键改价
             </button>
+            <button class="layui-btn" type="button" id="closeIframe"><i
+                        class="layui-icon layui-icon-log" style="font-size: 15px; color: white;"></i>刷新表格
+            </button>
         </form>
 
     </blockquote>
@@ -76,9 +79,11 @@ $get_first_product = First_Product_Model::find_all();
     </table>
 </div>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog" data-url="/product_quote/index/edit_attr?id={{d.id}}" lay-event="edit">属性</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog" data-url="/product_quote/index/edit_attr?id={{d.id}}"
+       lay-event="edit">属性</a>
     <a class="layui-btn layui-btn-normal layui-btn-xs yd-dialog"
-       data-url="/product_quote/index/edit_quote?id={{d.id}}" lay-event="edit">报价</a>
+       data-url="/product_quote/index/edit_quote?id={{d.id}}&product_name={{d.name}}" data-primary-button-label="关闭并刷新"
+       data-primary-button-click="closeIframe" lay-event="edit_price">报价</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs " lay-event="del">删除</a>
 </script>
 <script>
@@ -142,6 +147,13 @@ $get_first_product = First_Product_Model::find_all();
                     layer.close(index);
                 });
             }
+            // if(obj.event === 'edit_price'){
+            //     table.reload("test", {
+            //         where: {
+            //             query: $("#query").val()
+            //         }
+            //     });
+            // }
         });
     });
 
@@ -149,7 +161,7 @@ $get_first_product = First_Product_Model::find_all();
         table.reload("test", {
             where: {
                 product_id: $("#product_id").val(),
-                first_product_id:  $("#first_product_id").val(),
+                first_product_id: $("#first_product_id").val(),
             }
         });
     }
@@ -190,6 +202,14 @@ $get_first_product = First_Product_Model::find_all();
             YDJS.hide_dialog(uuid);
             YDJS.toast("请选择加价或减价！", YDJS.ICON_WARN);
         }
+    })
+    //关闭刷新
+    function closeIframe(e) {
+        YDJS.hide_dialog(e)
+        table.reload("test", {});
+    }
+    $("#closeIframe").click(function () {
+        table.reload("test", {});
     })
 
 </script>

@@ -32,11 +32,11 @@ class Index_Controller extends YZE_Resource_Controller
         $product_quote_search->page = $request->get_from_get("page", 1);
         $product_quote_search->pagesize = $request->get_from_get("limit", 10);
         if ($product_id) {
-            $product_quote_search->page = 1;
+//            $product_quote_search->page = 1;
             $product_quote_search->product_id = trim($product_id);
         }
         if ($first_product_id) {
-            $product_quote_search->page = 1;
+//            $product_quote_search->page = 1;
             $product_quote_search->first_product_id = trim($first_product_id);
         }
         $product_quote_datas = $product_quote_search->build_sql(new YZE_SQL(), $totalcnt);
@@ -134,13 +134,14 @@ class Index_Controller extends YZE_Resource_Controller
         $request = $this->request;
         $this->layout = 'empty';
         $product_price_id = $request->get_from_get('id');
+        $product_name = $request->get_from_get('product_name');
         $datas = Product_Price_Model::find_by_id($product_price_id);
         $attribute_ids = explode(",", $datas->quote_standard_ids);
         $price = explode(",", $datas->price);
         $this->set_View_Data('product_price_id', $product_price_id);
         $this->set_View_Data('attribute_ids', $attribute_ids);
         $this->set_View_Data('price', $price);
-        $this->set_view_data('yze_page_title', '产品改价');
+        $this->set_view_data('yze_page_title', $product_name);
     }
     //只修改报价
     public function post_edit_price()

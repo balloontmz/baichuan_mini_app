@@ -77,7 +77,6 @@ $product_price_id = $this->get_data('product_price_id');
                 data-submit-cb="afterSubmit"
                 data-in-top=1
                 data-url="/product_quote/index/edit_price"
-                data-redirect="/product_quote/index/index"
                 type="button">
             <i class="iconfont icon-baocun"></i> 保存
         </button>

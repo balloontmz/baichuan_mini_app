@@ -133,7 +133,7 @@
             content: url || content,
             title: title,
             id: dialog_id,
-            btnAlign: 'r',
+            btnAlign: 'c',
             shade: backdrop_value,
             shadeClose: flag,
             maxmin: true, //开启最大化最小化按钮
