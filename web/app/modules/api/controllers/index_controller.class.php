@@ -107,7 +107,7 @@ class Index_Controller extends YZE_Resource_Controller
             }
             for ($i = 0; $i < count($second_attri); $i++) {
                 $datas[$i]['attr_name'] = First_Attribute_Model::find_by_id(Second_Attribute_Model::find_by_id($second_attri[$i])->first_attribute_id)->name;
-                $datas[$i]['child'] = $second_name_obj_arr[$i];
+                $datas[$i]['child'] = array_values($second_name_obj_arr[$i]);
             }
             return YZE_JSON_View::success($this, $datas);
         } else {

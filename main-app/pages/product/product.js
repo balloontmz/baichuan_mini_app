@@ -82,6 +82,7 @@ Page({
     // 赋值字段名称
     let setDataFiled = `attributeList[${boxindex}].child[${detailindex}].isMark`
     // 关闭其他高亮
+    // debugger
     attributeList[boxindex].child.forEach((el, index) => {
       // 关闭高亮的字段名称
       let setDataFiled = `attributeList[${boxindex}].child[${index}].isMark`

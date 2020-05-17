@@ -89,7 +89,13 @@
 .brand-col {
     height: 100rpx;
     text-align: center;
-    line-height: 100rpx;
+    /* line-height: 100rpx; */
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10rpx;
+    justify-content: center;
+
 }
 
 .brand-col.current {

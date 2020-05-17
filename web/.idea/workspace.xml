@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/controllers/index_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/views/index-edit_quote.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/views/index-edit_quote.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product_quote/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product_quote/views/index-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public_html/js/ydhl-layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/public_html/js/ydhl-layui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__app_setting__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/__app_setting__.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/phone_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/phone_controller.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../main-app" />
+    <property name="last_opened_file_path" value="D:/新建文件夹/室内设计培训机构" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -160,6 +159,7 @@
       <workItem from="1589468489501" duration="2683000" />
       <workItem from="1589563668981" duration="3183000" />
       <workItem from="1589636458661" duration="11507000" />
+      <workItem from="1589706780836" duration="7120000" />
     </task>
     <servers />
   </component>
@@ -183,10 +183,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1589388590389" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1589037415791">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1589724858670">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589037415791" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589724858670" />
     <state x="430" y="177" key="NewPhpClassDialog" timestamp="1586591751938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -48,7 +48,7 @@ class Phone_Controller extends YZE_Resource_Controller
 
     private function decryptData($sessionKey, $encryptedData, $iv)
     {
-        if (strlen($sessionKey) != 24) {
+        if (strlen(stripslashes($sessionKey)) != 24) {
             throw new YZE_FatalException("encodingAesKey 非法", IllegalAesKey);
         }
         $aesKey = base64_decode($sessionKey);
