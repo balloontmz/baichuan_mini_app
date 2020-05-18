@@ -4,11 +4,11 @@ namespace  app;
  * 项目的配置文件
  */
 define("YZE_UPLOAD_PATH", YZE_APP_PATH. "public_html".DS."upload".DS);//end by /
-define("YZE_MYSQL_USER",  "baichuan");
-define("YZE_MYSQL_HOST_M",  "129.28.110.158");
+define("YZE_MYSQL_USER",  "root");
+define("YZE_MYSQL_HOST_M",  "127.0.0.1");
 define("YZE_MYSQL_DB",  "baichuan");
 define("YZE_MYSQL_PORT",  "3306");
-define("YZE_MYSQL_PASS",  "baichuanadmin");
+define("YZE_MYSQL_PASS",  "weiwei");
 define("YZE_MONGODB_USER",  "");
 define("YZE_MONGODB_HOST_M",  "");
 define("YZE_MONGODB_NAME",  "");

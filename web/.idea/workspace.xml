@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/welcome/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/welcome/welcome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__app_setting__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/__app_setting__.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/phone_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/phone_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/common/hooks/sign_auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/common/hooks/sign_auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +160,8 @@
       <workItem from="1589468489501" duration="2683000" />
       <workItem from="1589563668981" duration="3183000" />
       <workItem from="1589636458661" duration="11507000" />
-      <workItem from="1589706780836" duration="7120000" />
+      <workItem from="1589706780836" duration="7439000" />
+      <workItem from="1589821342426" duration="3006000" />
     </task>
     <servers />
   </component>

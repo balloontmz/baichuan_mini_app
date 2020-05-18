@@ -83,7 +83,7 @@ Page({
   },
   //点击键盘上的搜索
   goSearch: function(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../search/search',
     })
   },

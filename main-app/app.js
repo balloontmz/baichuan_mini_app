@@ -3,6 +3,7 @@ App({
   // API: "http://127.0.0.1:8090/",
   // API: "https://www.bckj.store/",
   NEW_API:"https://www.bckj.store",
+  wx_appid:"wx7717d96c45ce7e7d",
   globalData: {
     jump_tyep: null,
     wx_user_info: {
@@ -14,8 +15,7 @@ App({
       cellphone: null,
       name: "",
       status: "",
-      session_key: "",
-      wx_appid:"wx7717d96c45ce7e7d"
+      session_key: ""
     },
   },
 
@@ -23,7 +23,6 @@ App({
   onLaunch: function () {
   },
   onShow: function () {
-
   },
 
   getUseinfo() {
@@ -59,7 +58,10 @@ App({
    */
   login(page_id) {
     let that = this;
-    console.log(that.globalData.wx_user_info)
+    let wx_appid = {
+      wx_appid:"wx7717d96c45ce7e7d"
+    }
+    Object.assign(this.globalData.wx_user_info,wx_appid);
     var page_id = page_id;
     wx.request({
       url: this.NEW_API + "/signin.json", //登录获取信息的接口
@@ -85,10 +87,6 @@ App({
           if (page_id == 0) {
             wx.switchTab({
               url: '/pages/welcome/welcome',
-            })
-          } else if (page_id == 1) {
-            wx.switchTab({
-              url: '/pages/user/index',
             })
           }
         } else {
@@ -118,6 +116,6 @@ App({
     wx.setStorageSync("cellphone", this.globalData.wx_user_info.cellphone);
     wx.setStorageSync("avatarUrl", this.globalData.wx_user_info.avatarUrl);
     wx.setStorageSync("nickName", this.globalData.wx_user_info.nickName);
-    wx.setStorageSync("wx_appid", "wx7717d96c45ce7e7d");
+    wx.setStorageSync("wx_appid", "wx7717d96c45ce7e7d")
   }
 })

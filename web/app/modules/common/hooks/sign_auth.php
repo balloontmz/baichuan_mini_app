@@ -22,8 +22,9 @@ YZE_Hook::add_hook(YD_COMMON_SIGNIN_POST, function () {
         return $admin;
     } else {
         $wx_data = YZE_Hook::do_hook(YD_ASSET_WX_USER_LOGIN);
-        if ($wx_data AND $wx_data['userInfo']['status'] == 1) return $wx_data;
-        if ($wx_data AND $wx_data['userInfo']['status'] != 1) {
+//        var_dump($wx_data);
+        if ($wx_data AND $wx_data['userInfo']['openid']) return $wx_data;
+        if ($wx_data AND $wx_data['userInfo']['status'] == -1) {
             throw new \yangzie\YZE_FatalException("小程序登录失败,您的账号存在异常！");
         } else {
             throw new \yangzie\YZE_FatalException("登录失败,请检查登录账号信息");
@@ -72,7 +73,7 @@ YZE_Hook::add_hook(YD_ASSET_WX_USER_LOGIN, function () {
     if (!$user) {       //新用户
         $user = new User_Model();
         $user->set(User_Model::F_UUID, uuid());
-        $user->set(User_Model::F_STATUS, is_numeric($user->status) ? $user->status : 1);
+        $user->set(User_Model::F_STATUS, "1");
         $user->set(User_Model::F_LOGIN_DATE, date('Y-m-d H:i:s', time()));
         $user->set(User_Model::F_WX_APPID, $wx_appid);
         $user->set(User_Model::F_OPENID, $data["openid"])->save();

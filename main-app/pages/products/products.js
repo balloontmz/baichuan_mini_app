@@ -68,7 +68,7 @@ Page({
   //点击键盘上的搜索
   goSearch: function(e) {
     // console.log(e.detail.value);
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../search/search',
     })
   },
