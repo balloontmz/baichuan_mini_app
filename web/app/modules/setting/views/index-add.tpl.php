@@ -1,6 +1,5 @@
 <?php
 namespace app\setting;
-
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
@@ -14,7 +13,6 @@ use \yangzie\YZE_RuntimeException;
  */
 
 $data = $this->get_data('arg_name');
-$get_pics = $this->get_data('swiper_pics');
 ?>
 <style>
     .upimg img {
@@ -23,30 +21,26 @@ $get_pics = $this->get_data('swiper_pics');
 </style>
 <div class="m-3">
     <div class="d-flex align-items-center justify-content-between">
-        <h2 class="font-weight-bold">轮播图</h2>
-        <div class="">
-            <button type="button" class="layui-btn layui-btn-normal yd-link" data-url="/setting/index/add">新增
-            </button>
-        </div>
+        <h2 class="font-weight-bold">新增轮播图</h2>
     </div>
     <div class="ml-3 layui-card flex-grow-1 pt-3 mt-2 pb-2">
         <form class="layui-form" id="landscape_form">
             <div class="layui-form-item">
-
+                <label class="layui-form-label">上传图片：</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn" id="test2"><i class="layui-icon"></i>选择图片</button>
                     <div class="layui-upload">
                         <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                             预览图：
-                            <?php foreach ($get_pics as $item) { ?>
-                                <div class="layui-upload-list upimg" id="demo2">
-                                    <img src="<?= UPLOAD_SITE_URI . $item->pic_url ?>" class="layui-upload-img">
-                                </div>
-                                <input type="hidden" id="pics-id<?= $item->id ?>">
-                                <button type="button" class="layui-btn yd-spin-btn" id="del-btn" lay-filter="demo1">
-                                    删除
-                                </button>
-                            <?php } ?>
+                            <div class="layui-upload-list upimg" id="demo2"></div>
                         </blockquote>
                     </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn yd-spin-btn" id="save-btn" lay-filter="demo1">保存</button>
+                </div>
             </div>
         </form>
     </div>
@@ -77,26 +71,26 @@ $get_pics = $this->get_data('swiper_pics');
     $(function () {
         $('#save-btn').click(function () {
             var send_data = $('#landscape_form').serializeArray();
-            send_data.push({name: 'pics', value: pic_path});
+            send_data.push({name:'pics',value:pic_path});
             // console.log(send_data);
             $.ajax({
-                url: "/setting/index/add",
-                method: "post",
-                data: send_data,
-                success: function (ret) {
-                    if (ret && ret.success) {
+                url : "/setting/index/add",
+                method : "post",
+                data : send_data,
+                success : function (ret) {
+                    if(ret && ret.success){
                         YDJS.spin_clear("#save-btn");
-                        YDJS.toast("添加成功", YDJS.ICON_SUCCESS, function () {
+                        YDJS.toast("添加成功",YDJS.ICON_SUCCESS,function(){
                             window.location.reload();
                         });
-                    } else {
+                    }else{
                         YDJS.spin_clear("#save-btn");
-                        YDJS.toast(ret.msg, YDJS.ICON_WARN);
+                        YDJS.toast(ret.msg,YDJS.ICON_WARN);
                     }
                 },
-                error: function () {
+                error : function () {
                     YDJS.spin_clear("#save-btn");
-                    YDJS.toast("系统错误", YDJS.ICON_ERROR);
+                    YDJS.toast("系统错误",YDJS.ICON_ERROR);
                 }
             });
         })

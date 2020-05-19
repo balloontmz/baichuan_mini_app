@@ -57,7 +57,8 @@ class App_Module extends \yangzie\YZE_Base_Module{
 			"app/vendor/http.php",
 			"app/vendor/TCPDF/tcpdf.php",
 			"app/vendor/pinyin.php",
-			"app/vendor/diff.class.php"
+			"app/vendor/diff.class.php",
+			"app/vendor/uploader.class.php"
 		);
         
         return $files;

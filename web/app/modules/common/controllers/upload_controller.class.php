@@ -13,7 +13,7 @@ use yangzie\yze_remove_abs_path;
  *
  * @version $Id$
  * @package common
- *         
+ *
  */
 class Upload_Controller extends YZE_Resource_Controller {
 
@@ -80,7 +80,7 @@ class Upload_Controller extends YZE_Resource_Controller {
         $request = $this->request;
         if ($request->get_from_get("type") == "ckeditor") {
             if ($request->get_from_get("responseType") == "json") {//拖动上传
-                
+
                 $json = new \yangzie\YZE_JSON_View($this, array(
                     "uploaded" => $successData ? 1 : 0,
                     "fileName" => $successData['name'],
@@ -93,7 +93,7 @@ class Upload_Controller extends YZE_Resource_Controller {
             }
             // 上传成功,输出ckedit的js代码, 文件浏览器选择或者文件对话框上传
             echo '<script type="text/javascript">';
-            
+
             $callback = $request->get_from_get("CKEditorFuncNum");
             if ($successData) {
                 echo 'window.parent.CKEDITOR.tools.callFunction(' . $callback . ',"' . UPLOAD_SITE_URI . $successData['path'] . '","")';

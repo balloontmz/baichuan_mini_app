@@ -1,5 +1,8 @@
 <?php
+
 namespace app\setting;
+
+use yangzie\YZE_Hook;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
@@ -8,18 +11,43 @@ use \yangzie\YZE_RuntimeException;
 use \yangzie\YZE_JSON_View;
 
 /**
-*
-* @version $Id$
-* @package setting
-*/
-class Index_Controller extends YZE_Resource_Controller {
-    public function index(){
+ *
+ * @version $Id$
+ * @package setting
+ */
+class Index_Controller extends YZE_Resource_Controller
+{
+    public function index()
+    {
         $request = $this->request;
         //$this->layout = 'tpl name';
-        $this->set_view_data('yze_page_title', 'this is controller index');
+        $login_admin = YZE_Hook::do_hook(YZE_HOOK_GET_LOGIN_USER);
+        $get_pics = Setting_Model::get_by_wx_appid($login_admin->wx_appid);
+        $this->set_view_data('swiper_pics', $get_pics);
+        $this->set_view_data('yze_page_title', '系统配置');
     }
 
-    public function exception(YZE_RuntimeException $e){
+    public function post_add()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $datas = $request->the_post_datas();
+        $login_admin = YZE_Hook::do_hook(YZE_HOOK_GET_LOGIN_USER);
+        $pics_arr = explode(",",$datas["pics"]);
+        for ($i = 0; $i < count($pics_arr); $i++) {
+            $setting_model = new Setting_Model();
+            $setting_model->set(Setting_Model::F_UUID, uuid());
+            $setting_model->set(Setting_Model::F_WX_APPID, $login_admin->wx_appid);
+            $setting_model->set(Setting_Model::F_PIC_URL, $pics_arr[$i]);
+            $setting_model->set(Setting_Model::F_TYPE, "swiper");
+            $setting_model->save();
+        }
+        return YZE_JSON_View::success($this);
+    }
+
+
+    public function exception(YZE_RuntimeException $e)
+    {
         $request = $this->request;
         $this->layout = 'error';
         //处理中出现了异常，如何处理，没有任何处理将显示500页面
@@ -29,4 +57,5 @@ class Index_Controller extends YZE_Resource_Controller {
         //return $this->wrapResponse($this->yourmethod())
     }
 }
+
 ?>

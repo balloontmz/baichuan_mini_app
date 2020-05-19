@@ -111,7 +111,7 @@ YZE_Hook::add_hook(YD_LAYOUT_SIDEBAR_VIEW, function ($layout) {
                         <a href="/setting/index" class="yd-popper-trigger" id="menu-item-news"
                            data-popper-position="left">
                             <i class="iconfont icon-gongchang"></i>
-                            <cite>轮播设置</cite>
+                            <cite>系统配置</cite>
                         </a>
                     </li>
                 <?php } ?>

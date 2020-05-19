@@ -32,7 +32,7 @@ YZE_Hook::add_hook(YD_COMMON_UPLOADED, function ( $data ) {
     $type_id = $request->get_from_get("type_id") ? $request->get_from_get("type_id") : null;
 
     $file         = File_Model::save_file($upload_file["name"], $path, $upload_file["size"], $type_id, $file_id, $target_id, $target_class);
-  
+
     $result ["id"] = $file->uuid;
     $result ["extra"]["date"] = $file->date;
     return $result;
