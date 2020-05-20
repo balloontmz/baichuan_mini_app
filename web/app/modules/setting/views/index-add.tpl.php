@@ -21,10 +21,20 @@ $data = $this->get_data('arg_name');
 </style>
 <div class="m-3">
     <div class="d-flex align-items-center justify-content-between">
-        <h2 class="font-weight-bold">新增轮播图</h2>
+        <h2 class="font-weight-bold">新增图片</h2>
     </div>
     <div class="ml-3 layui-card flex-grow-1 pt-3 mt-2 pb-2">
         <form class="layui-form" id="landscape_form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型：</label>
+                <div class="layui-input-inline">
+                    <select name="img_type" id="img_type">
+                        <option value="">请选择图片类型</option>
+                        <option value="swiper">轮播</option>
+                        <option value="sign">启动页</option>
+                    </select>
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">上传图片：</label>
                 <div class="layui-input-block">
@@ -53,6 +63,7 @@ $data = $this->get_data('arg_name');
             , upload = layui.upload;
         //多图片上传
         upload.render({
+
             elem: '#test2'
             , url: '/common/upload'
             , multiple: true

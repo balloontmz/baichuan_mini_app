@@ -1,4 +1,4 @@
 <!--pages/sigin/sigin.wxml-->
 <view class="login">
-  <image src="../../img/login.jpg" mode="aspectFill" style="width:{{width}}px; height:{{height}}px"></image>
+  <image src="{{sign_img}}" mode="aspectFill" style="width:{{width}}px; height:{{height}}px"></image>
 </view>

@@ -1,5 +1,5 @@
 // pages/welcome/welcome.js
-const APP = getApp();
+const app = getApp();
 Page({
 
   /**
@@ -15,9 +15,7 @@ Page({
         phoneNo: '18198576789'
       }
     ],
-    imgUrls:[{
-      img_url:'../../img/index.jpg'
-    }],
+    imgUrls:[],
     // imgUrls: [{
     //     url: "../couponget/index",
     //     src: "../../img/activie.png"
@@ -55,29 +53,19 @@ Page({
   onLoad: function() {
     var that = this;
     wx.request({
-      url: APP.API + 'getInfoList',
-      method: 'GET',
+      url: app.NEW_API + "/api/swiper_img.json",
+      method: "post",
       data: {
-        types: 1,
-        start: 0,
-        size: 100
+        wx_appid: app.wx_appid
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: 'GET',
-      dataType: 'json',
       success: function(res) {
-        var imgs = res.data;
-        console.log("===>", imgs)
-        var httpss = "https://www.bckj.store";
-        for (var i = 0; imgs.length > i; i++) {
-          imgs[i]["http"] = httpss
-
-        }
-        // that.setData({
-        //   imgs: imgs
-        // })
+        console.log(res);
+        that.setData({
+          imgUrls: res.data.data.swiper_imgs
+        })
       }
     })
   },

@@ -8,12 +8,12 @@
   <view class="banner">
     <swiper autoplay="true" class="swiper-wrapper" indicatorActiveColor="#fff" indicatorColor="#cda8df" indicatorDots="{{imgUrls.length>1}}" interval="3000">
       <block wx:for="{{imgUrls}}" wx:key="this">
-        <!-- <swiper-item>
-          <image class="slide-image" mode="aspectFill" src="{{item.http+item.img_url}}"></image>
-        </swiper-item> 临时启动静态图片-->
         <swiper-item>
-          <image class="slide-image" mode="aspectFill" src="{{item.img_url}}"></image>
+          <image class="slide-image" mode="aspectFill" src="{{item}}"></image>
         </swiper-item>
+        <!-- <swiper-item>
+          <image class="slide-image" mode="aspectFill" src="{{item.img_url}}"></image>
+        </swiper-item> -->
       </block>
     </swiper>
   </view>

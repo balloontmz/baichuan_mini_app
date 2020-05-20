@@ -91,6 +91,18 @@ class Api_Module extends YZE_Base_Module
                         "action" => "up_order_status"
                     ),
                 ),
+                'api/sign_img' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "sign_img"
+                    ),
+                ),
+                'api/swiper_img' => array(
+                    'controller' => 'index',
+                    'args' => array(
+                        "action" => "swiper_img"
+                    ),
+                ),
             )
         );
     }

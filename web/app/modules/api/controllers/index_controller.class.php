@@ -10,6 +10,7 @@ use app\product\First_Product_Model;
 use app\product\Product_Model;
 use app\product_quote\Product_Price_Model;
 use app\product_quote\Product_Quote_Module;
+use app\setting\Setting_Model;
 use app\user\Store_Option_Model;
 use app\user\Store_User_Model;
 use app\user\User_Model;
@@ -245,7 +246,7 @@ class Index_Controller extends YZE_Resource_Controller
         $openid = $request->get_from_post('openid');
         $wx_appid = $request->get_from_post('wx_appid');
         $status = $request->get_from_post("status");
-        if($status){
+        if ($status) {
             $order = Order_Model::get_by_openid($openid, $wx_appid, $status);
             $datas = [];
             $i = 0;
@@ -256,7 +257,7 @@ class Index_Controller extends YZE_Resource_Controller
                 $datas[$i]['param'] = trim($item->desc);
                 $i++;
             }
-        }else{
+        } else {
             $order = Order_Model::get_all($openid, $wx_appid);
             $datas = [];
             $i = 0;
@@ -290,14 +291,44 @@ class Index_Controller extends YZE_Resource_Controller
         $this->layout = '';
         $order_id = $request->get_from_get('id');
         $save_data = [
-            "status"=>$request->get_from_get("status"),
-            "consignor"=>$request->get_from_get("consignor"),
-            "address"=>$request->get_from_get("address"),
-            "express_company"=>$request->get_from_get("express_company"),
-            "express_num"=>$request->get_from_get("express_num")
+            "status" => $request->get_from_get("status"),
+            "consignor" => $request->get_from_get("consignor"),
+            "address" => $request->get_from_get("address"),
+            "express_company" => $request->get_from_get("express_company"),
+            "express_num" => $request->get_from_get("express_num")
         ];
-        Order_Model::update_by_id($order_id,$save_data);
+        Order_Model::update_by_id($order_id, $save_data);
         return YZE_JSON_View::success($this);
+    }
+
+    //启动页图
+    public function post_sign_img()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $wx_appid = $request->get_from_post('wx_appid');
+        $sign_img = Setting_Model::get_by_type(trim($wx_appid), 'sign');
+        $datas = [
+            "sign_img" => UPLOAD_SITE_URI . $sign_img->pic_url
+        ];
+        return YZE_JSON_View::success($this, $datas);
+    }
+
+    //轮播
+    public function post_swiper_img()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $wx_appid = $request->get_from_post('wx_appid');
+        $swiper_imgs = Setting_Model::get_by_wx_appid(trim($wx_appid), 'swiper');
+        $swiper_imgs_arr = [];
+        for ($i = 0; $i < count($swiper_imgs); $i++) {
+            $swiper_imgs_arr[$i] = UPLOAD_SITE_URI.$swiper_imgs[$i]->pic_url;
+        }
+        $datas = [
+            "swiper_imgs" => $swiper_imgs_arr
+        ];
+        return YZE_JSON_View::success($this, $datas);
     }
 
 

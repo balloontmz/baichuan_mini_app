@@ -78,13 +78,27 @@ class Setting_Model extends YZE_Model
     );
 
     /**
-     * @param $wx_appid
+     * @param $wx_appid //针对轮播
+     * @param $type
+     * @return array
+     *
      */
-    public function get_by_wx_appid($wx_appid)
+    public function get_by_wx_appid($wx_appid, $type)
     {
         return Setting_Model::from()
-            ->where("wx_appid=:wx_appid")
-            ->select(["wx_appid" => $wx_appid]);
+            ->where("wx_appid=:wx_appid and type=:type")
+            ->select([":wx_appid" => $wx_appid, ":type" => $type]);
+    }
+
+    /**
+     * @param $type  //针对启动
+     * @return Setting_Model
+     */
+    public function get_by_type($wx_appid, $type)
+    {
+        return Setting_Model::from()
+            ->where("wx_appid=:wx_appid and type=:type")
+            ->getSingle([":wx_appid" => $wx_appid, ":type" => $type]);
     }
 
 

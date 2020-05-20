@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    sign_img:""
   },
 
   /**
@@ -38,7 +38,23 @@ Page({
           title: '请稍等...',
           mask: true,
           success: function(res) {
-            app.getWXUserInfo(page_id) //获取code调用登录
+            wx.request({
+              url: app.NEW_API + "/api/sign_img.json",
+              method: "post",
+              data: {
+                wx_appid: app.wx_appid
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                that.setData({
+                  sign_img: res.data.data.sign_img
+                })
+                app.getWXUserInfo(page_id) //获取code调用登录
+              },
+            })
+           
           },
           fail: function(res) {},
           complete: function(res) {},

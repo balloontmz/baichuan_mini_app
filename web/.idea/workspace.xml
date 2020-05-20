@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/setting/views/index-add.tpl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/uploader.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__aros_acos__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/__aros_acos__.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__config__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/__config__.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/hooks/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/common/controllers/upload_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/common/controllers/upload_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/common/hooks/upload_action.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/common/hooks/upload_action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/common/views/upload-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/common/views/upload-index.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/__module__.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/__module__.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/setting/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/setting/controllers/index_controller.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/setting/models/setting_model.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/setting/models/setting_model.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/setting/views/index-add.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/setting/views/index-add.tpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/setting/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/setting/views/index-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public_html/img/jinghui.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/public_html/img/jinghui.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +159,7 @@
       <workItem from="1589706780836" duration="7439000" />
       <workItem from="1589821342426" duration="3125000" />
       <workItem from="1589899921156" duration="2005000" />
-      <workItem from="1589902007345" duration="4611000" />
+      <workItem from="1589902007345" duration="10662000" />
     </task>
     <servers />
   </component>
