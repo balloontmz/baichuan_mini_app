@@ -19,6 +19,7 @@ $i=0;
 foreach ($product_datas as $item){
     $datas['data'][$i]['name'] = $item->name;
     $datas['data'][$i]['first_product_name']=First_Product_Model::find_by_id($item->first_product_id)->name;
+    $datas['data'][$i]['comment'] = $item->comment;
     $datas['data'][$i]['id'] = $item->id;
     $i++;
 }

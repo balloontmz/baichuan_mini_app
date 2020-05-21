@@ -14,8 +14,8 @@ define("YZE_MONGODB_HOST_M",  "");
 define("YZE_MONGODB_NAME",  "");
 define("YZE_MONGODB_PORT",  "");
 define("YZE_MONGODB_PASS",  "");
-define("SITE_URI", "http://baichuan.localhost/");//网站地址
-define("UPLOAD_SITE_URI", "http://baichuan.localhost/upload/");//上传文件内容访问地址，比如cdn; 这跟YZE_UPLOAD_PATH是对应的
+define("SITE_URI", "https://www.bckj.store/");//网站地址
+define("UPLOAD_SITE_URI", "https://www.bckj.store/upload/");//上传文件内容访问地址，比如cdn; 这跟YZE_UPLOAD_PATH是对应的
 
 
 define("YZE_DEVELOP_MODE",  true );

@@ -48,13 +48,15 @@ class Index_Controller extends YZE_Resource_Controller {
         $this->layout = '';
         $name = $request->get_from_post("name");
         $first_product_id = $request->get_from_post("first_product_id");
+        $comment = $request->get_from_post("comment");
         $product_id = $request->get_from_post("product_id");
         if ($product_id) {      //修改
-            Product_Model::update_by_id(trim($product_id), ["name" => $name, "first_product_id" => $first_product_id]);
+            Product_Model::update_by_id(trim($product_id), ["name" => $name, "first_product_id" => $first_product_id,"comment"=>trim($comment)]);
         } else {
             $product_model = new Product_Model();
             $product_model->set(Product_Model::F_UUID, uuid());
             $product_model->set(Product_Model::F_NAME, $name);
+            $product_model->set(Product_Model::F_COMMENT, $comment);
             $product_model->set(Product_Model::F_FIRST_PRODUCT_ID, $first_product_id);
             $product_model->save();
         }

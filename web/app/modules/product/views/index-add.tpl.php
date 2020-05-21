@@ -21,15 +21,6 @@ $first_product = First_Product_Model::find_all();
     <div class="ml-3 layui-card flex-grow-1 pt-3 mt-2 pb-2">
         <form class="layui-form" id="manager-form">
             <div class="layui-form-item">
-                <label class="layui-form-label">名称：</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="name" value="<?= $get_product->name ? $get_product->name : '' ?>"
-                           lay-verify="" autocomplete="off" class="layui-input">
-                    <input type="hidden" id="product_id"
-                           value="<?= $get_product->id ? $get_product->id : '' ?>">
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label">一级产品：</label>
                 <div class="layui-input-inline">
                     <select name="product_type_id" id="first_product_id" lay-filter="river_select" lay-search="">
@@ -42,6 +33,22 @@ $first_product = First_Product_Model::find_all();
                             <?php }
                         } ?>
                     </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="name" value="<?= $get_product->name ? $get_product->name : '' ?>"
+                           lay-verify="" autocomplete="off" class="layui-input">
+                    <input type="hidden" id="product_id"
+                           value="<?= $get_product->id ? $get_product->id : '' ?>">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-inline">
+                    <input type="text" style="width: 400px;" id="comment" value="<?= $get_product->comment ?$get_product->comment : '' ?>"
+                           lay-verify="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -62,7 +69,8 @@ $first_product = First_Product_Model::find_all();
                 data: {
                     name: $("#name").val(),
                     product_id: $("#product_id").val(),
-                    first_product_id: $("#first_product_id").val()
+                    first_product_id: $("#first_product_id").val(),
+                    comment: $("#comment").val()
                 },
                 success: function (res) {
                     if (res.success) {

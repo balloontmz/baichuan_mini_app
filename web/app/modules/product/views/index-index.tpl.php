@@ -39,6 +39,7 @@ $data = $this->get_data('arg_name');
         <tr>
             <th lay-data="{field:'name'}">名称</th>
             <th lay-data="{field:'first_product_name'}">上级分类名称</th>
+            <th lay-data="{field:'comment'}">备注</th>
             <th lay-data="{fixed: 'right', align: 'center',width:180, toolbar: '#barDemo'}">操作</th>
         </tr>
         </thead>

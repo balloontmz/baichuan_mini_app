@@ -65,6 +65,7 @@ class Index_Controller extends YZE_Resource_Controller
         $i = 0;
         foreach ($first_product as $item) {
             $datas[$i]['second_name'] = $item->name;
+            $datas[$i]['comment'] = $item->comment;
             $datas[$i]['id'] = $item->id;
             $i++;
         }
