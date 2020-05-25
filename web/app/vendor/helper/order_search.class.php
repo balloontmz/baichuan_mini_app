@@ -39,12 +39,21 @@ class Order_Search extends Base_Search
      */
     public $status;
 
+    /**
+     * 状态
+     * @var string
+     */
+    public $wx_appid;
+
     public function build_sql(YZE_SQL $sql, &$totalCount = 0)
     {
         try {
             $sql->from(Order_Model::CLASS_NAME, "o");
             if ($this->status)
                 $sql->where("o", Order_Model::F_STATUS, YZE_SQL::EQ, $this->status);
+            if($this->wx_appid){
+                $sql->where("o", Order_Model::F_WX_APPID, YZE_SQL::EQ, $this->wx_appid);
+            }
             $sql->limit(($this->page - 1) * $this->pagesize, $this->pagesize);
             $activity_list = YZE_DBAImpl::getDBA()->select($sql);
 

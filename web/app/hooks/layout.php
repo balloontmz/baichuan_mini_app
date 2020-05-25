@@ -100,21 +100,21 @@ YZE_Hook::add_hook(YD_LAYOUT_SIDEBAR_VIEW, function ($layout) {
                             <div class="popper__arrow"></div>
                         </div>
                     </li>
-                    <li class="layui-nav-item <?= $sidemenu == "order" ? "layui-nav-itemed layui-this" : "" ?>">
-                        <a href="/order/index" class="yd-popper-trigger" id="menu-item-news"
-                           data-popper-position="left">
-                            <i class="iconfont icon-gongchang"></i>
-                            <cite>订单管理</cite>
-                        </a>
-                    </li>
-                    <li class="layui-nav-item <?= $sidemenu == "setting" ? "layui-nav-itemed layui-this" : "" ?>">
-                        <a href="/setting/index" class="yd-popper-trigger" id="menu-item-news"
-                           data-popper-position="left">
-                            <i class="iconfont icon-gongchang"></i>
-                            <cite>系统配置</cite>
-                        </a>
-                    </li>
                 <?php } ?>
+                <li class="layui-nav-item <?= $sidemenu == "order" ? "layui-nav-itemed layui-this" : "" ?>">
+                    <a href="/order/index" class="yd-popper-trigger" id="menu-item-news"
+                       data-popper-position="left">
+                        <i class="iconfont icon-gongchang"></i>
+                        <cite>订单管理</cite>
+                    </a>
+                </li>
+                <li class="layui-nav-item <?= $sidemenu == "setting" ? "layui-nav-itemed layui-this" : "" ?>">
+                    <a href="/setting/index" class="yd-popper-trigger" id="menu-item-news"
+                       data-popper-position="left">
+                        <i class="iconfont icon-gongchang"></i>
+                        <cite>系统配置</cite>
+                    </a>
+                </li>
             </ul>
             <!--菜单部分}}-->
             <div class="m-3 text-muted text-xs copyright">

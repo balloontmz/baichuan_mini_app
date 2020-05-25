@@ -1,6 +1,7 @@
 <?php
 namespace app\order;
 use app\vendor\helper\Order_Search;
+use yangzie\YZE_Hook;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
@@ -18,10 +19,12 @@ class Index_Controller extends YZE_Resource_Controller {
     public function index(){
         $request = $this->request;
         //$this->layout = 'tpl name';
+        $login_user = YZE_Hook::do_hook(YZE_HOOK_GET_LOGIN_USER);
         $order_search = new Order_Search();
         $status = $request->get_from_get('status');
         $order_search->page = $request->get_from_get("page",1);
         $order_search->pagesize =  $request->get_from_get("limit",10);
+        $order_search->wx_appid = $login_user->wx_appid;
         if($status){
             $order_search->page = 1;
             $order_search->status=$status;
