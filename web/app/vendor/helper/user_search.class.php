@@ -50,6 +50,8 @@ class User_Search extends Base_Search
         try {
             $sql->from(User_Model::CLASS_NAME, "u");
             $sql->order_by("u", User_Model::F_ID, "desc");
+            $sql->where("u",User_Model::F_NAME,YZE_SQL::ISNOTNULL);
+            $sql->where("u",User_Model::F_CELLPHONE,YZE_SQL::ISNOTNULL);
             if ($this->wx_appid)
                 $sql->where("u", User_Model::F_WX_APPID, YZE_SQL::EQ, $this->wx_appid);
             if ($this->user_name)
