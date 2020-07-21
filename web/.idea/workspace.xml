@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../main-app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/search/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/search/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/search/search.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/search/search.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/project.config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/hooks/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product/controllers/index_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/product/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product/views/index-index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_option-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_option-index.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/api/controllers/index_controller.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -29,11 +26,11 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -51,18 +48,6 @@
       <recent name="D:\baichuan-work\web\app\vendor" />
       <recent name="D:\baichuan-work\web\app\public_html\img" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -165,11 +150,12 @@
       <workItem from="1592025449315" duration="108000" />
       <workItem from="1594912774750" duration="1585000" />
       <workItem from="1595172846702" duration="1448000" />
+      <workItem from="1595345492666" duration="1207000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="437" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589901126191">

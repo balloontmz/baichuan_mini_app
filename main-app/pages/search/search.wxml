@@ -8,7 +8,7 @@
   </view>
   <view wx:if="{{phoneList!=0}}">
     <view class="phonelist" wx:for="{{phoneList}}" wx:key>
-      <view class="phonename" bindtap="goProduct" data-id="{{item.id}}" data-name="{{item.second_name}}">{{item.second_name}}</view>
+      <view class="phonename" bindtap="goProduct" data-id="{{item.id}}" data-name="{{item.second_name}}" data-comment="{{item.comment}}">{{item.second_name}}</view>
     </view>
   </view>
   <view class="phonelist" wx:else="{{}}">

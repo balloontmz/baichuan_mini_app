@@ -172,6 +172,7 @@ class Index_Controller extends YZE_Resource_Controller
         foreach ($product_datas as $item) {
             $datas[$i]['id'] = $item->id;
             $datas[$i]['second_name'] = $item->name;
+            $datas[$i]['comment'] = $item->comment;
             $i++;
         }
         return YZE_JSON_View::success($this, $datas);

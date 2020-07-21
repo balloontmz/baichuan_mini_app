@@ -1,6 +1,6 @@
 //app.js
 App({
-  // API: "http://127.0.0.1:8090/",
+  // NEW_API: "http://127.0.0.1:8888",
   // API: "https://www.bckj.store/",
   NEW_API:"https://www.bckj.store",
   wx_appid:"wx7717d96c45ce7e7d",
