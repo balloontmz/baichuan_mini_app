@@ -4,15 +4,20 @@ Page({
     cisd: 1,
     uuid: 7,
     cateList: [{
-      classname: "手机",
-      id: 1
-    }, {
-      classname: "平板",
-      id: 2
-    }, {
-      classname: "笔记本",
-      id: 3
-    }],
+        classname: "手机",
+        id: 1
+      }, {
+        classname: "平板",
+        id: 2
+      }, {
+        classname: "笔记本",
+        id: 3
+      },
+      {
+        classname: "耳机",
+        id: 23
+      }
+    ],
     brandList: [{
       productList: []
     }],
@@ -154,7 +159,7 @@ Page({
       wx.switchTab({
         url: "../person/index",
       })
-    } else if (cellphone==null) {
+    } else if (cellphone == null) {
       wx.showModal({
         title: '提示',
         content: '为了给您提供更好的服务，请先前往个人中心绑定手机号哦！',

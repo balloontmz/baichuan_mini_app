@@ -1,5 +1,6 @@
 <?php
 namespace app\product;
+use app\product_quote\Product_Price_Model;
 use app\vendor\helper\Product_Search;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
@@ -60,6 +61,24 @@ class Index_Controller extends YZE_Resource_Controller {
             $product_model->set(Product_Model::F_FIRST_PRODUCT_ID, $first_product_id);
             $product_model->save();
         }
+        return YZE_JSON_View::success($this);
+    }
+
+    public function post_remove()
+    {
+        $request = $this->request;
+        $this->layout = '';
+        $product_id = $request->get_from_post("id");
+        $product = Product_Model::find_by_id($product_id);
+        $product->remove();
+
+
+        $product_price = Product_Price_Model::get_by_product_id($product_id);
+        foreach ($product_price as $item){
+            $product_price_id = Product_Price_Model::find_by_id($item->id);
+            $product_price_id->remove();
+        }
+
         return YZE_JSON_View::success($this);
     }
 

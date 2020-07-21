@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c3f359-363b-46bd-965f-564bc8bba1ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../main-app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main-app/pages/products/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main-app/pages/products/products.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/hooks/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/order/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/order/controllers/index_controller.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/helper/order_search.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/helper/order_search.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product/controllers/index_controller.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product/controllers/index_controller.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/product/views/index-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/product/views/index-index.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/user/views/store_option-index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/user/views/store_option-index.tpl.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +37,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/work-space/river_check/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -157,7 +160,11 @@
       <workItem from="1589821342426" duration="3125000" />
       <workItem from="1589899921156" duration="2005000" />
       <workItem from="1589902007345" duration="17562000" />
-      <workItem from="1590416030836" duration="1941000" />
+      <workItem from="1590416030836" duration="2484000" />
+      <workItem from="1591538580913" duration="4361000" />
+      <workItem from="1592025449315" duration="108000" />
+      <workItem from="1594912774750" duration="1585000" />
+      <workItem from="1595172846702" duration="1448000" />
     </task>
     <servers />
   </component>
@@ -181,10 +188,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1590418721395" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1589905171247">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1592025528750">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589905171247" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592025528750" />
     <state x="430" y="177" key="NewPhpClassDialog" timestamp="1586591751938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

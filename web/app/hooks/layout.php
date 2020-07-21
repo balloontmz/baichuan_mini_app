@@ -108,6 +108,15 @@ YZE_Hook::add_hook(YD_LAYOUT_SIDEBAR_VIEW, function ($layout) {
                         <cite>订单管理</cite>
                     </a>
                 </li>
+                <?php if ($loginUser->type == "normal") { ?>
+                    <li class="layui-nav-item <?= $sidemenu == "option" ? "layui-nav-itemed layui-this" : "" ?>">
+                        <a href="/user/store_option" class="yd-popper-trigger" id="menu-item-news"
+                           data-popper-position="left">
+                            <i class="iconfont icon-gongchang"></i>
+                            <cite>报价管理</cite>
+                        </a>
+                    </li>
+                <?php } ?>
                 <li class="layui-nav-item <?= $sidemenu == "setting" ? "layui-nav-itemed layui-this" : "" ?>">
                     <a href="/setting/index" class="yd-popper-trigger" id="menu-item-news"
                        data-popper-position="left">

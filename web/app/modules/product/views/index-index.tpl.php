@@ -58,9 +58,9 @@ $data = $this->get_data('arg_name');
         table.on('tool(test)', function (obj) {
             var id = obj.data.id;
             if (obj.event === 'del') {
-                layer.confirm("确定要该分类吗？", function (index) {
+                layer.confirm("确定要该产品吗？", function (index) {
                     $.ajax({
-                        url: "/product/first_product/remove",
+                        url: "/product/index/remove",
                         method: "post",
                         data: {
                             id: id

@@ -2,6 +2,7 @@
 namespace app\user;
 
 use app\product\First_Product_Model;
+use yangzie\YZE_Hook;
 use \yangzie\YZE_Resource_Controller;
 use \yangzie\YZE_Request;
 use \yangzie\YZE_Redirect;
@@ -16,35 +17,42 @@ use \yangzie\YZE_RuntimeException;
 
 $data = $this->get_data('arg_name');
 $store_user = Store_User_Model::get_normal();
+$loginUser = YZE_Hook::do_hook(YZE_HOOK_GET_LOGIN_USER);
 ?>
 <form class="layui-form">
     <div class="m-3">
         <fieldset class="layui-elem-field layui-field-title">
             <legend class="font-weight-light">店铺配置</legend>
         </fieldset>
-        <div class="card">
-            <div class="card-header">请选择店铺</div>
-            <table class="layui-table m-0">
-                <thead>
-                <tr>
-                    <th>店铺名称</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="p-0">
-                        <select name="store_user_id" id="store_user_id" class="layui-select store_user"
-                                lay-filter="first_product" lay-search="">
-                            <option value="">请选择</option>
-                            <?php foreach ($store_user as $item) { ?>
-                                <option value="<?= $item->id ?>"><?= $item->store_name ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <?php if ($loginUser->type == "admin") { ?>
+            <div class="card">
+                <div class="card-header">请选择店铺</div>
+                <table class="layui-table m-0">
+                    <thead>
+                    <tr>
+                        <th>店铺名称</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="p-0">
+                            <select name="store_user_id" id="store_user_id" class="layui-select store_user"
+                                    lay-filter="first_product" lay-search="">
+                                <option value="">请选择</option>
+                                <?php foreach ($store_user as $item) { ?>
+                                    <option value="<?= $item->id ?>"><?= $item->store_name ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        <?php } else { ?>
+            <input class="layui-input" name="store_user_id" id="store_user_id" value="<?= $loginUser->id ?>"
+                   type="hidden">
+        <?php } ?>
+
         <div class="card mt-2">
             <div class="card-header">请选择产品</div>
             <table class="layui-table m-0">
@@ -98,7 +106,6 @@ $store_user = Store_User_Model::get_normal();
                 method: 'get',
                 dataType: "JSON",
                 success: function (res) {
-                    console.log(res.tr);
                     $("#fprlist").html(res.tr);
                     YDJS.rebind();
                     layuiform.render();
@@ -115,6 +122,21 @@ $store_user = Store_User_Model::get_normal();
     });
     $(function () {
         //删除行
+        <?php if($loginUser->type == "normal"){ ?>
+            $.ajax({
+                url: '/user/store_option/index.json',
+                data: {
+                    store_user_id: <?=$loginUser->id?>
+                },
+                method: 'get',
+                dataType: "JSON",
+                success: function (res) {
+                    $("#fprlist").html(res.tr);
+                    YDJS.rebind();
+                    layuiform.render();
+                }
+            });
+        <?php } ?>
         $('.atrlist').delegate(".removetr", 'click', function () {
             if ($(".atrlist tr").length <= 1) {
                 layer.alert("至少保留一行");
