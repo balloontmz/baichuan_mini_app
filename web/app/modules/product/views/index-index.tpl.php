@@ -69,7 +69,12 @@ $data = $this->get_data('arg_name');
                             if (res.success) {
                                 // obj.del();
                                 YDJS.toast("删除成功", YDJS.ICON_SUCCESS, function () {
-                                    window.location.reload();
+                                    // window.location.reload();
+                                    table.reload("test", {
+                                        where: {
+                                            query: $("#query").val()
+                                        }
+                                    });
                                 });
                             } else {
                                 YDJS.toast("删除失败", YDJS.ICON_WARN);
