@@ -44,12 +44,18 @@ class Product_Model extends YZE_Model{
      * @var string
      */
     const F_COMMENT = "comment";
+    /**
+     * 位置排序
+     * @var string
+     */
+    const F_INDEX = "index";
     public static $columns = array(
                'id'         => array('type' => 'integer', 'null' => false,'length' => '11','default'	=> '',),
        'uuid'       => array('type' => 'string', 'null' => false,'length' => '45','default'	=> '',),
        'first_product_id' => array('type' => 'integer', 'null' => false,'length' => '11','default'	=> '',),
        'name'       => array('type' => 'string', 'null' => false,'length' => '80','default'	=> '',),
        'comment'    => array('type' => 'string', 'null' => true,'length' => '255','default'	=> '',),
+       'index'      => array('type' => 'string', 'null' => true,'length' => '255','default'	=> '',),
 
     );
     //array('attr'=>array('from'=>'id','to'=>'id','class'=>'','type'=>'one-one||one-many') )
